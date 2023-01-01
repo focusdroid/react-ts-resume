@@ -1,0 +1,12 @@
+.backlogview {
+    width: 100%;
+    padding: 20px 36px;
+}
+.cardstyle {
+    width: 100%;
+    max-height: 260px;
+
+}
+.cardstyle .ant-card-body {
+    max-height: 260px;
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Less File" />
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HWNFUuLOhLGYjLFC2wvC9BOFcu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="D:\work\React\react-ts-resume\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\React\react-ts-resume" />
+      <recent name="D:\work\react\react-ts-resume\src\view\main" />
+      <recent name="D:\work\react\react-ts-resume\src\components\header" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/App.test.tsx" />
+      <test-names>
+        <test-name value="renders learn react link" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.renders learn react link" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="" />
+      <created>1668396775771</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668396775771</updated>
+      <workItem from="1668396781761" duration="44788000" />
+      <workItem from="1670160370784" duration="2193000" />
+      <workItem from="1670226746721" duration="78776000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="93" y="93" width="1288" height="678" key="DiffContextDialog" timestamp="1670322181192">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="93" y="93" width="1288" height="678" key="DiffContextDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670322181192" />
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1670322181192">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670322181192" />
+    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1670408279738">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670408279738" />
+    <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1671346616946">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671346616946" />
+    <state x="437" y="164" width="600" height="536" key="find.popup" timestamp="1670409787760">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="437" y="164" width="600" height="536" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670409787760" />
+    <state x="394" y="197" key="run.anything.popup" timestamp="1671438536197">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="394" y="197" key="run.anything.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671438536197" />
+    <state x="478" y="188" width="516" height="543" key="search.everywhere.popup" timestamp="1671350231369">
+      <screen x="0" y="0" width="1474" height="864" />
+    </state>
+    <state x="-1297" y="244" width="672" height="678" key="search.everywhere.popup/0.0.1474.864/-1920.9.1920.1080@-1920.9.1920.1080" timestamp="1671345514681" />
+    <state x="478" y="188" width="516" height="543" key="search.everywhere.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671350231369" />
+  </component>
+</project>
