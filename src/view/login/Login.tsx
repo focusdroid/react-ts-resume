@@ -23,7 +23,7 @@ const Login = () => {
                     name="email"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input value="weexss@163.com" />
+                    <Input />
                 </Form.Item>
 
                 <Form.Item
@@ -31,7 +31,8 @@ const Login = () => {
                     name="password"
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
-                    <Input.Password value="123456" />
+                    <Input.Password />
+                    <div style={{textAlign: 'end', padding: '10px 0'}}>没有账号，<span onClick={goRegister} style={{color: "#0a43fe", cursor: "pointer"}}>去注册</span></div>
                 </Form.Item>
 
                 <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
@@ -63,6 +64,9 @@ const Login = () => {
     function onFinishFailed (errorInfo: any) {
         console.log('Failed:', errorInfo.trim);
     };
+    function goRegister () {
+        navigate("/register")
+    }
 }
 
 export default Login
