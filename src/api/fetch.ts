@@ -2,7 +2,7 @@ class Request {
     private headers: { token: string };
     constructor() {
         this.headers = {
-            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJ3ZWV4c3NAMTYzLmNvbSIsIk5hbWUiOiIiLCJFbWFpbCI6IndlZXhzc0AxNjMuY29tIiwiUGhvbmUiOiIiLCJleHAiOjE2NzE2MjUxMDR9.67_h9N2cbe5DstYiBShfSpLsYaKkiaL9bfqMHxDJZyc'
+            token: localStorage.token || ''
         }
     }
     GetRequest (url: string, params: any = {}) {
@@ -15,7 +15,7 @@ class Request {
                 url += '&' + paramsArr.join('&')
             }
         }
-         fetch(url,{
+         return fetch(url,{
             method: "GET",
             headers: this.headers
         }).then((res: any) => {
@@ -26,7 +26,7 @@ class Request {
         })
     }
     PostRequest (url: string, params: Object = {}) {
-        fetch(url, {
+        return fetch(url, {
             method: 'POST',
             headers: this.headers,
             body: JSON.stringify(params)
@@ -34,6 +34,8 @@ class Request {
             const { status, ok } = res
             if (status === 200 && ok) {
                 return res.json()
+            } else {
+                return {}
             }
         })
     }

@@ -1,8 +1,68 @@
-
+import {Button, Card, Checkbox, Form, Input, message} from 'antd';
+import style from './login.module.css'
+import { user } from '../../utils/type'
+import { LoginReuqest } from '../../api'
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-    return <div>
-        <h1>Login</h1>
+    const navigate = useNavigate();
+    const [messageApi, contextHolder] = message.useMessage();
+    return <div className={style.loginBox}>
+        {contextHolder}
+        <Card style={{width: 500, height: 260}}>
+            <Form
+                name="basic"
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
+            >
+                <Form.Item
+                    label="邮箱"
+                    name="email"
+                    rules={[{ required: true, message: 'Please input your username!' }]}
+                >
+                    <Input value="weexss@163.com" />
+                </Form.Item>
+
+                <Form.Item
+                    label="密码"
+                    name="password"
+                    rules={[{ required: true, message: 'Please input your password!' }]}
+                >
+                    <Input.Password value="123456" />
+                </Form.Item>
+
+                <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+                    <Checkbox>记住密码</Checkbox>
+                </Form.Item>
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Button type="primary" htmlType="submit" block size="large">
+                        登录
+                    </Button>
+                </Form.Item>
+            </Form>
+        </Card>
     </div>
+    function onFinish (values: user) {
+        LoginReuqest(values).then((res:any) => {
+            const { code, message, token } = res
+            if (code === "200") {
+                localStorage.token = token
+                navigate("/", {replace: true})
+            } else {
+                messageApi.open({
+                    type: 'warning',
+                    content: message,
+                });
+            }
+        })
+    };
+    function onFinishFailed (errorInfo: any) {
+        console.log('Failed:', errorInfo.trim);
+    };
 }
 
 export default Login

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="" />
+    <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/type.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/login/login.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/login/Login.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +22,8 @@
       <list>
         <option value="Less File" />
         <option value="TypeScript JSX File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -37,6 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -83,7 +91,7 @@
       <updated>1668396775771</updated>
       <workItem from="1668396781761" duration="44788000" />
       <workItem from="1670160370784" duration="2193000" />
-      <workItem from="1670226746721" duration="78776000" />
+      <workItem from="1670226746721" duration="84648000" />
     </task>
     <servers />
   </component>
@@ -111,10 +119,10 @@
       <screen x="0" y="0" width="1474" height="864" />
     </state>
     <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670322181192" />
-    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1670408279738">
+    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1672556188677">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
-    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670408279738" />
+    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1672556188677" />
     <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1671346616946">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
