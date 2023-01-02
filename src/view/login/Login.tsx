@@ -32,8 +32,8 @@ const Login = () => {
                     rules={[{ required: true, message: 'Please input your password!' }]}
                 >
                     <Input.Password />
-                    <div style={{textAlign: 'end', padding: '10px 0'}}>没有账号，<span onClick={goRegister} style={{color: "#0a43fe", cursor: "pointer"}}>去注册</span></div>
                 </Form.Item>
+                <div style={{textAlign: 'end', padding: '10px 0'}}>没有账号，<span onClick={goRegister} style={{color: "#0a43fe", cursor: "pointer"}}>去注册</span></div>
 
                 <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
                     <Checkbox>记住密码</Checkbox>
@@ -52,13 +52,14 @@ const Login = () => {
             const { code, message, token } = res
             if (code === "200") {
                 localStorage.token = token
-                navigate("/", {replace: true})
             } else {
                 messageApi.open({
                     type: 'warning',
                     content: message,
                 });
             }
+        }).then(() => {
+            navigate("/", {replace: true})
         })
     };
     function onFinishFailed (errorInfo: any) {

@@ -13,3 +13,6 @@ export function LoginReuqest(params: user):any { // 登录
 export function RegisterRequest (params: user):any { // 注册
     return request.PostRequest(`${baseUrl}/register`, params)
 }
+export function SendEmail (params: Object){ // 获取邮箱验证码
+    return request.PostRequest(`${baseUrl}/sendMail`, params)
+}

@@ -4,6 +4,7 @@ class Request {
         this.headers = {
             token: localStorage.token || ''
         }
+        this.refleshToken()
     }
     GetRequest (url: string, params: any = {}) {
         if (Object.keys(params).length){
@@ -38,6 +39,15 @@ class Request {
                 return {}
             }
         })
+    }
+    refleshToken () {
+        let timer
+        if (timer) {
+            return
+        }
+        timer = setInterval(() =>{
+            console.log("刷新token", new Date().getTime())
+        }, 1000*60*60)
     }
 }
 

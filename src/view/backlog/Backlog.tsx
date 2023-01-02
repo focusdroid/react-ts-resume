@@ -1,5 +1,7 @@
 import {Card, Button, Row, Col, Table, Space} from 'antd';
 import style from './backlog.module.css'
+import {useEffect} from "react";
+import {GetResumeList} from "../../api";
 const dataSource = [
     {
         key: '1',
@@ -83,6 +85,9 @@ const columns = [
     },
 ];
 const Backlog = () => {
+    useEffect(() =>{
+        GetResumeList()
+    }, [])
     return <div className={style.backlogview}>
         <Row gutter={16}>
             <Col xs={24} sm={12} md={12} lg={12}>
