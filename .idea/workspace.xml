@@ -8,9 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/type.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/register/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/register/Register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +90,7 @@
       <updated>1668396775771</updated>
       <workItem from="1668396781761" duration="44788000" />
       <workItem from="1670160370784" duration="2193000" />
-      <workItem from="1670226746721" duration="96103000" />
+      <workItem from="1670226746721" duration="102152000" />
     </task>
     <servers />
   </component>
@@ -127,10 +126,10 @@
       <screen x="0" y="0" width="1474" height="864" />
     </state>
     <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671346616946" />
-    <state x="437" y="164" width="600" height="536" key="find.popup" timestamp="1670409787760">
+    <state x="72" y="52" width="1340" height="785" key="find.popup" timestamp="1672656359398">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
-    <state x="437" y="164" width="600" height="536" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670409787760" />
+    <state x="72" y="52" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1672656359398" />
     <state x="394" y="197" key="run.anything.popup" timestamp="1671438536197">
       <screen x="0" y="0" width="1474" height="864" />
     </state>

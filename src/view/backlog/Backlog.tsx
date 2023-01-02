@@ -1,76 +1,73 @@
 import {Card, Button, Row, Col, Table, Space} from 'antd';
 import style from './backlog.module.css'
-import {useEffect} from "react";
-import {GetResumeList} from "../../api";
-const dataSource = [
-    {
-        key: '1',
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号',
-    },
-    {
-        key: '2',
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号',
-    },
-];
+import {useEffect, useState} from "react";
+import {GetMainResumeList} from "../../api";
+import {ResponseParam} from "../../utils/type";
 const columns = [
     {
         title: '序号',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'id',
+        key: 'id',
     },
     {
         title: '姓名',
-        dataIndex: 'age',
-        key: 'age',
+        dataIndex: 'name',
+        key: 'name',
     },
     {
         title: '岗位/级别',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'level',
+        key: 'level',
+    },
+    {
+        title: '邮箱',
+        dataIndex: 'phone',
+        key: 'phone',
+    },
+    {
+        title: '邮箱',
+        dataIndex: 'email',
+        key: 'email',
     },
     {
         title: '性别',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'gender',
+        key: 'gender',
     },
     {
         title: '岗位目标公司',
-        dataIndex: 'age',
-        key: 'age',
+        dataIndex: 'target_company',
+        key: 'target_company',
     },
     {
         title: '首次联系时间',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'first_contact_time',
+        key: 'first_contact_time',
     },
     {
         title: '入职意向',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'employment_intention',
+        key: 'employment_intention',
     },
     {
         title: '是否确认入职',
-        dataIndex: 'age',
-        key: 'age',
+        dataIndex: 'confirm_enrollment',
+        key: 'confirm_enrollment',
     },
     {
         title: '岗位工资',
-        dataIndex: 'address',
-        key: 'address',
+        dataIndex: 'post_salary',
+        key: 'post_salary',
     },
     {
         title: '最后确认工资',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'post_salary',
+        key: 'post_salary',
     },
     {
         title: '入职时间',
-        dataIndex: 'age',
-        key: 'age',
+        dataIndex: 'time_induction',
+        key: 'time_induction',
     },
     {
         title: '操作',
@@ -85,9 +82,11 @@ const columns = [
     },
 ];
 const Backlog = () => {
+    const [lists, setResumeList] = useState<any>()
     useEffect(() =>{
-        GetResumeList()
-    }, [])
+        getMainResumeList()
+    }, ["1"])
+    // @ts-ignore
     return <div className={style.backlogview}>
         <Row gutter={16}>
             <Col xs={24} sm={12} md={12} lg={12}>
@@ -107,9 +106,19 @@ const Backlog = () => {
         </Row>
         <div></div>
         <Card title="重点关注人群" style={{padding: 0}}>
-            <Table bordered dataSource={dataSource} columns={columns} />
+            <Table bordered dataSource={lists} columns={columns}/>
         </Card>
     </div>
+    function getMainResumeList () {
+        GetMainResumeList().then((res:ResponseParam) => {
+            const { code, data } = res
+            if (code === "200") {
+                setResumeList(data.data)
+                console.log(lists)
+            }
+        })
+
+    }
 }
 
 export default Backlog

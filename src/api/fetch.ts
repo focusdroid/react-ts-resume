@@ -1,3 +1,5 @@
+import {RefreshToken} from "./index";
+
 class Request {
     private headers: { token: string };
     constructor() {
@@ -46,6 +48,11 @@ class Request {
             return
         }
         timer = setInterval(() =>{
+            RefreshToken({token: this.headers.token}).then(res => {
+                if (res.code === "200") {
+                    localStorage.token = res.token
+                }
+            })
             console.log("刷新token", new Date().getTime())
         }, 1000*60*60)
     }

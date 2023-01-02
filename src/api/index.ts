@@ -2,8 +2,8 @@ import { user } from '../utils/type'
 import request from './fetch'
 
 const baseUrl = "/api"
-export function GetResumeList (){
-    return request.GetRequest(`${baseUrl}/list/resume`)
+export function GetMainResumeList (){
+    return request.GetRequest(`${baseUrl}/list/mainResume`)
     // useSWR('/api/list/resume', request.GetRequest )
 }
 export function LoginReuqest(params: user):any { // 登录
@@ -15,4 +15,7 @@ export function RegisterRequest (params: user):any { // 注册
 }
 export function SendEmail (params: Object){ // 获取邮箱验证码
     return request.PostRequest(`${baseUrl}/sendMail`, params)
+}
+export function RefreshToken (params: Object) {
+    return request.GetRequest(`${baseUrl}/refreshToken`, params)
 }
