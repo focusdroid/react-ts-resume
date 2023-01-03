@@ -1,10 +1,13 @@
-import { user } from '../utils/type'
+import { user, searchField } from '../utils/type'
 import request from './fetch'
 
 const baseUrl = "/api"
-export function GetMainResumeList (){
+export function GetMainResumeList (){ // 获取重点关注人员简历
     return request.GetRequest(`${baseUrl}/list/mainResume`)
     // useSWR('/api/list/resume', request.GetRequest )
+}
+export function GetAllResumeList(params: searchField){ // 获取全部人员简历
+    return request.GetRequest(`${baseUrl}/list/resume`, params)
 }
 export function LoginReuqest(params: user):any { // 登录
     return request.PostRequest(`${baseUrl}/login`, params)

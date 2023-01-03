@@ -6,8 +6,6 @@ import {ResponseParam} from "../../utils/type";
 const columns = [
     {
         title: '序号',
-        dataIndex: 'id',
-        key: 'id',
     },
     {
         title: '姓名',
@@ -106,7 +104,9 @@ const Backlog = () => {
         </Row>
         <div></div>
         <Card title="重点关注人群" style={{padding: 0}}>
-            <Table bordered dataSource={lists} columns={columns}/>
+            <Table
+                rowKey={(record:any)=> record.index}
+                bordered dataSource={lists} columns={columns}/>
         </Card>
     </div>
     function getMainResumeList () {

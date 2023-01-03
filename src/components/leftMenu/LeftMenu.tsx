@@ -29,6 +29,7 @@ function getItem(
 const items: MenuItem[] = [
     getItem('首页/待办', '/', '/', <MailOutlined />),
     getItem('简历管理', '/resumeManagement', '/resumeManagement', <MailOutlined />),
+    getItem('上传测试', '/uploadTest', '/uploadTest', <MailOutlined />),
     getItem('路由管理', 'sub2', '', <AppstoreOutlined />, [
         getItem('Option 5', '5', ''),
         getItem('Option 6', '6', ''),

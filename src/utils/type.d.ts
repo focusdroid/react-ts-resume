@@ -18,6 +18,11 @@ export declare  interface PageParam {
     total: string | number
 }
 
+export declare interface searchField {
+    name: string
+    email: string
+}
+
 
 export declare interface ResumeList { // 简历人员列表
     confirm_enrollment: string

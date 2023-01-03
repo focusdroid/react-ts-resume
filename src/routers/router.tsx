@@ -1,9 +1,9 @@
 import {Component, FC, lazy, Suspense, useEffect} from 'react'
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {RouterProvider, Route, BrowserRouter, Routes} from "react-router-dom";
 import App from "../App";
-import {Login, Backlog, Main, Register, Hello, ResumeManagement, router} from './routes'
+import {Login, Backlog, Main, Register, Hello, ResumeManagement, UploadTest, router} from './routes'
 
-const localRouterMap = {
+/*const localRouterMap = {
     'App': <App/>,
     'Login': <Login/>,
     'Backlog': <Backlog/>,
@@ -11,16 +11,10 @@ const localRouterMap = {
     'Main': <Main/>,
     'Hello': <Hello/>,
     'ResumeManagement': <ResumeManagement/>,
-}
+}*/
 
 /*const Router: FC = () => {
-    return <BrowserRouter>
-        <Suspense fallback={'...'}>
-            <Routes>
-                {renderRoute(router)}
-            </Routes>
-        </Suspense>
-    </BrowserRouter>
+    return <RouterProvider router={router}/>
     function renderRoute (route:any) {
          return route.map((item:any)=> {
             if (item.children) {
@@ -29,7 +23,8 @@ const localRouterMap = {
              <Route key={item.id} path={item.path} element={`<${item.component}/>`} />
         })
     }
-}*/
+}
+export default Router*/
 const Router: FC = () => {
     return <BrowserRouter>
             <Suspense fallback={'...'}>
@@ -41,6 +36,7 @@ const Router: FC = () => {
                             <Route index element={<Backlog/>}></Route>
                             <Route path="/resumeManagement" element={<ResumeManagement/>}></Route>
                             <Route path="/hello" element={<Hello/>}></Route>
+                            <Route path="/uploadTest" element={<UploadTest/>}></Route>
                         </Route>
                     </Route>
                 </Routes>

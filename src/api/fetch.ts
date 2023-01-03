@@ -54,7 +54,7 @@ class Request {
                 }
             })
             console.log("刷新token", new Date().getTime())
-        }, 1000*60*60)
+        }, 1000*60)
     }
 }
 
