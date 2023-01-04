@@ -105,7 +105,7 @@ const Backlog = () => {
         <div></div>
         <Card title="重点关注人群" style={{padding: 0}}>
             <Table
-                rowKey={(record:any)=> record.index}
+                rowKey={(record:any)=> record.id}
                 bordered dataSource={lists} columns={columns}/>
         </Card>
     </div>

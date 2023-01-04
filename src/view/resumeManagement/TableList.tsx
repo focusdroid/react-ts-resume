@@ -1,11 +1,21 @@
-import {FC} from "react";
+import React, {FC} from "react";
+import {ColumnsType } from "antd/es/table"
 import {Button, Space, Table} from 'antd'
+import {ResumeObj} from "../../utils/type";
 // import {ResumeList} from "../../utils/type";
 interface IProps {
     list: any
 }
 
-const columns = [
+interface ColumnType {
+    title: string
+    dataIndex: string
+    key: React.Key
+    width: number
+    fixed?: string | boolean
+}
+
+const columns:ColumnsType<ColumnType> = [
     {
         title: '序号',
         width: 50
@@ -14,7 +24,8 @@ const columns = [
         title: '姓名',
         dataIndex: 'name',
         key: 'name',
-        width: 100
+        width: 100,
+        render: (text, record,_) => <a onClick={() => getCurrentDetail(record)}>{text}</a>,
     },
     {
         title: '岗位/级别',
@@ -44,13 +55,13 @@ const columns = [
         title: '岗位目标公司',
         dataIndex: 'target_company',
         key: 'target_company',
-        width: 150
+        width: 120
     },
     {
         title: '首次联系时间',
         dataIndex: 'first_contact_time',
         key: 'first_contact_time',
-        width: 150
+        width: 120
     },
     {
         title: '入职意向',
@@ -62,7 +73,7 @@ const columns = [
         title: '是否确认入职',
         dataIndex: 'confirm_enrollment',
         key: 'confirm_enrollment',
-        width: 150
+        width: 120
     },
     {
         title: '岗位工资',
@@ -84,29 +95,35 @@ const columns = [
     },
     {
         title: '操作',
+        dataIndex: 'action',
         key: 'action',
-        width: 100,
-        render: () => (
-            <div style={{    display: "flex",
+        fixed: 'right' as 'right',
+        width: 80,
+        render: (_, record) => <div style={{ display: "flex",
                 flexDirection: "column",
-                width: 120,
                 alignItems: "center"}}>
-                <Button>取消重点关注</Button>
-                <Button danger type="primary">删除</Button>
-                <Button type="primary">详情</Button>
+                <Button onClick={() => changeFollow(record)} size="small" style={{marginTop: 10}}>关注</Button>
+                <Button onClick={() => deleteCurrent(record)} size="small" style={{marginTop: 10}} danger type="primary">删除</Button>
             </div>
-        )
     },
 ];
+const getCurrentDetail = (record:ColumnType) => { // 获取用户详情
+    console.log(record)
+}
+const changeFollow = (record: ColumnType) => { // 关注/取消关注
+    console.log(record)
+}
+const deleteCurrent = (record:ColumnType) => { // 删除用户
+    console.log(record)
+}
 const TableList:FC<IProps> = (props) =>{
     const {list} = props
-    return <div style={{marginTop: 10}}>
-        <Table
-            rowKey={(record:any)=> record.key}
+    return <Table
+            rowKey={(record:any)=> record.id}
             bordered
+            scroll={{ x: true }}
             dataSource={list}
             columns={columns} />
-    </div>
 }
 
 export default TableList

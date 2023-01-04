@@ -50,6 +50,7 @@ class Request {
         timer = setInterval(() =>{
             RefreshToken({token: this.headers.token}).then(res => {
                 if (res.code === "200") {
+                    localStorage.token = ""
                     localStorage.token = res.token
                 }
             })

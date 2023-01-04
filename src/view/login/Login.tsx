@@ -52,14 +52,17 @@ const Login = () => {
             const { code, message, token } = res
             if (code === "200") {
                 localStorage.token = token
+                return code
             } else {
                 messageApi.open({
                     type: 'warning',
                     content: message,
                 });
             }
-        }).then(() => {
-            navigate("/", {replace: true})
+        }).then((code: string) => {
+            if (code === "200") {
+                navigate("/", {replace: true})
+            }
         })
     };
     function onFinishFailed (errorInfo: any) {
