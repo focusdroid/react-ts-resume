@@ -1,0 +1,7 @@
+.goback {
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-left: 10px;
+}

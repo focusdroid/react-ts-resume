@@ -9,6 +9,7 @@ export const Hello = lazy(() => import("../components/hello/Hello"))
 export const Backlog = lazy(() => import("../view/backlog/Backlog"))
 export const ResumeManagement = lazy(() => import("../view/resumeManagement/ResumeManagement"))
 export const UploadTest = lazy(() => import("../components/uploadTest/UploadTest"))
+export const AddResume = lazy(() => import("../view/addResume/AddResume"))
 /*import App from "../App"
 import Main from "../view/main/Main"
 import Login from "../view/login/Login"
