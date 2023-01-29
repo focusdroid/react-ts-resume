@@ -35,12 +35,20 @@ class Request {
             body: JSON.stringify(params)
         }).then((res) => {
             const { status, ok } = res
+            console.log(res)
             if (status === 200 && ok) {
                 return res.json()
             } else {
                 return {}
             }
-        })
+        })/*.then((res:any) => {
+            console.log(res)
+            if (res.code === "2001") {
+                return res
+            } else {
+                window.location.href = "/login"
+            }
+        })*/
     }
     refleshToken () {
         let timer

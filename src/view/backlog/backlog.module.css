@@ -1,5 +1,5 @@
 .backlogview {
-    width: 100%;
+    width: calc(100% - 220px);
     padding: 20px 36px;
 }
 .cardstyle {

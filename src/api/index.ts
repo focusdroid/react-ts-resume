@@ -22,3 +22,7 @@ export function SendEmail (params: Object){ // 获取邮箱验证码
 export function RefreshToken (params: Object) {
     return request.GetRequest(`${baseUrl}/refreshToken`, params)
 }
+export function modifyMain(params: Object){ // 添加/取消关注
+    return request.PostRequest(`${baseUrl}/list/modifyMain`, params)
+
+}
