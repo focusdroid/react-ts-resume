@@ -1,4 +1,4 @@
-import {Card, Button, Row, Col, Table, Space} from 'antd';
+import {Card, Button, Row, Col, Table} from 'antd';
 import style from './backlog.module.css'
 import {Fragment, useEffect, useState} from "react";
 import {GetMainResumeList, modifyMain} from "../../api";
@@ -92,8 +92,7 @@ const Backlog = () => {
     const [lists, setResumeList] = useState<any>()
     useEffect(() =>{
         getMainResumeList()
-    }, ["1"])
-    // @ts-ignore
+    }, [])
     return <div className={style.backlogview}>
         <Row gutter={16}>
             <Col xs={24} sm={12} md={12} lg={12}>
@@ -126,18 +125,15 @@ const Backlog = () => {
             const { code, data } = res
             if (code === "200") {
                 setResumeList(data.data)
-                console.log(lists)
             }
         })
     }
     function cancelFollow (ele:ResumeObj ) {
-        console.log(ele)
         modifyMain({
             id: ele?.id,
             status: "0",
         }).then((res:any) => {
             const { code } = res
-            console.log(res)
             if (code === '200') {
                 message.success(res.message)
                 getMainResumeList()

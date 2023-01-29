@@ -1,17 +1,17 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
 import { useNavigate } from "react-router-dom"
 import { Button, Form, Input, Card, Row,Col } from 'antd';
 import {searchField} from "../../utils/type";
 interface IProps {
-    getAllResumeSource: (values: searchField) => searchField | null | undefined | void
+    getAllResumeSource: (values: searchField) => searchField | null | undefined | void | Object
 }
-const Search: FC<IProps> = (props, any) => {
+const Search: FC<IProps> = (props:IProps, _:any) => {
     const navigate = useNavigate()
     const {getAllResumeSource} = props
     const [form] = Form.useForm();
     useEffect(() => {
         getAllResumeSource({name:"", email:""})
-    }, [])
+    },[])
     return <Card title="简历管理" style={{width: "100%", height: 200}}>
         <Form
             layout="inline"

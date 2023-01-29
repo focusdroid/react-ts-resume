@@ -1,5 +1,5 @@
 import {RefreshToken} from "./index";
-import {message} from "antd";
+// import {message} from "antd";
 
 class Request {
     private headers: { token: string };

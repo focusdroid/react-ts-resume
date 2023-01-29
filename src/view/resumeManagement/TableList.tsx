@@ -1,4 +1,4 @@
-import React, {FC, Key, useState} from "react";
+import React, {FC, useState} from "react";
 import { levelField } from "../../utils/types"
 import {Button, Card, Row, Col, Drawer, message, Popconfirm, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
@@ -9,13 +9,13 @@ interface IProps {
     freshSource: (values: searchField) => searchField | null | undefined | void
 }
 
-interface ColumnType {
+/*interface ColumnType {
     title: string
     dataIndex: string
     key: Key
     width: number
     fixed?: string | boolean
-}
+}*/
 
 
 const TableList:FC<IProps> = (props) =>{
@@ -28,7 +28,7 @@ const TableList:FC<IProps> = (props) =>{
             key: 'name',
             fixed: 'left' as 'left',
             width: 180,
-            render: (text:any, record:ResumeObj,_:any) => <a>
+            render: (text:any, record:ResumeObj, _:any) => <div>
                 <span onClick={() => getCurrentDetail(record)}>{text}</span>
                 {!record.follow ? <Tag style={{marginLeft: 10}} color="#87d068">
                     重点关注
@@ -60,7 +60,7 @@ const TableList:FC<IProps> = (props) =>{
                     </Card>
                     <Button style={{marginTop: 10}} type="primary">在线查看简历</Button>
                 </Drawer>
-            </a>
+            </div>
         },
         {
             title: '岗位/级别',
