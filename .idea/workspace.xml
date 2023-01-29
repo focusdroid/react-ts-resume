@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/resumeManagement/resume.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/type.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/ResumeManagement.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/ResumeManagement.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +88,7 @@
       <workItem from="1668396781761" duration="44788000" />
       <workItem from="1670160370784" duration="2193000" />
       <workItem from="1670226746721" duration="127445000" />
-      <workItem from="1674968873876" duration="20587000" />
+      <workItem from="1674968873876" duration="20907000" />
     </task>
     <servers />
   </component>
