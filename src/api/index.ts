@@ -24,5 +24,10 @@ export function RefreshToken (params: Object) {
 }
 export function modifyMain(params: Object){ // 添加/取消关注
     return request.PostRequest(`${baseUrl}/list/modifyMain`, params)
-
+}
+export function deleteResume(params: Object){ // 添加/取消关注
+    return request.GetRequest(`${baseUrl}/list/delete`, params)
+}
+export function detail(params:Object){
+    return request.GetRequest(`${baseUrl}/list/detail`, params)
 }

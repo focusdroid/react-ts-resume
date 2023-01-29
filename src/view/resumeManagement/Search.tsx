@@ -34,7 +34,7 @@ const Search: FC<IProps> = (props, any) => {
             <Row>
                 <Col>
                     <Form.Item>
-                        <Button>重置</Button>
+                        <Button onClick={reset}>重置</Button>
                     </Form.Item>
                 </Col>
                 <Col>
@@ -50,8 +50,10 @@ const Search: FC<IProps> = (props, any) => {
             </Col>
         </Row>
     </Card>;
+    function reset (){
+        form.resetFields();
+    }
     function onFinish (values: searchField) {
-        // console.log("values", values)
         getAllResumeSource(values)
     }
     function addResume () {

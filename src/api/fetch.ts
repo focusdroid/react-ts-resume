@@ -1,4 +1,5 @@
 import {RefreshToken} from "./index";
+import {message} from "antd";
 
 class Request {
     private headers: { token: string };
@@ -33,22 +34,19 @@ class Request {
             method: 'POST',
             headers: this.headers,
             body: JSON.stringify(params)
-        }).then((res) => {
+        }).then((res:any) => {
             const { status, ok } = res
             console.log(res)
+            /*if (res.data.data.code === '2001') {
+                message.error("登录失效，请重新登陆")
+                window.location.href = "/login"
+            }*/
             if (status === 200 && ok) {
                 return res.json()
             } else {
                 return {}
             }
-        })/*.then((res:any) => {
-            console.log(res)
-            if (res.code === "2001") {
-                return res
-            } else {
-                window.location.href = "/login"
-            }
-        })*/
+        })
     }
     refleshToken () {
         let timer
