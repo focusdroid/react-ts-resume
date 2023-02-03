@@ -32,12 +32,17 @@ class Request {
                 body: JSON.stringify(params)
             }
         }
-
         return fetch(url,Object.assign(fetchOption, {method: methods.toUpperCase(),headers: this.headers})).then((res: any) => {
             const { status, ok } = res
             if (status === 200 && ok) {
                 return res.json()
             }
+        }).then(res => {
+            if (res.code === "2001") {
+                console.log("token可能失效了")
+                window.location.replace("/login")
+            }
+            return res
         })
     }
     GetRequest (url: string, params: any = {}) {

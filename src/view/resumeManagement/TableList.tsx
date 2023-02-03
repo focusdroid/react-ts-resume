@@ -30,7 +30,7 @@ const TableList:FC<IProps> = (props) =>{
             width: 180,
             render: (text:any, record:ResumeObj, _:any) => <div>
                 <span onClick={() => getCurrentDetail(record)}>{text}</span>
-                {!record.follow ? <Tag style={{marginLeft: 10}} color="#87d068">
+                {record.follow ? <Tag style={{marginLeft: 10}} color="#87d068">
                     重点关注
                 </Tag> : ""}
                 <Drawer width={800} title={`${resumeDetail?.name} 简历详情  / 当前年月日: ${new Date().toLocaleDateString().replaceAll("/", "-")}`} placement="right" onClose={onClose} open={open}>
@@ -135,7 +135,7 @@ const TableList:FC<IProps> = (props) =>{
             render: (_: any, record: ResumeObj) => <div style={{ display: "flex",
                 flexDirection: "column",
                 alignItems: "center"}}>
-                {!record.follow ? <Button size="small" type="primary" onClick={() => changeFollow(record)}>关注</Button> : null }
+                {!record.follow ? <Button size="small" type="primary" onClick={() => changeFollow(record, "1")}>关注</Button> : <Button size="small" onClick={() => changeFollow(record, '0')}>取消关注</Button> }
                 <Popconfirm
                     title="确认删除？"
                     onConfirm={() => deleteConfirm(record)}
@@ -157,14 +157,13 @@ const TableList:FC<IProps> = (props) =>{
         scroll={{ x: 1800 }}
         dataSource={list}
         columns={columns} />
-    function changeFollow (record: ResumeObj) { // 关注/取消关注
+    function changeFollow (record: ResumeObj, status:string) { // 关注/取消关注
         console.log(record)
         modifyMain({
             id: record?.id,
-            status: "1",
+            status,
         }).then((res:any) => {
             const { code } = res
-            console.log(res)
             if (code === '200') {
                 message.success(res.message)
                 freshRequest()

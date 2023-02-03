@@ -12,6 +12,7 @@ const ResumeManagement: FC = () => {
     </div>
     function getAllResumeSource (values: searchField) {
         GetAllResumeList(Object.assign(values, {pageNum: 1, pageSize: 10})).then((res:ResponseParam) => {
+            console.log("code", res)
             const { code, data } = res
             if (code === "200") {
                 setListData(data.data)
