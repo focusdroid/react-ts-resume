@@ -1,9 +1,10 @@
-import {Card, Button, Row, Col, Table} from 'antd';
+import {Card, Button, Row, Col, Table, message} from 'antd';
 import style from './backlog.module.css'
 import {Fragment, useEffect, useState} from "react";
 import {GetMainResumeList, modifyMain} from "../../api";
 import {ResponseParam, ResumeObj} from "../../utils/type";
-import { message } from 'antd'
+import useSWR from "swr";
+import { baseUrl } from '../../api/index'
 
 const detailCurrent = (ele:ResumeObj) => {
     console.log(ele)
@@ -90,9 +91,28 @@ const Backlog = () => {
         },
     ];
     const [lists, setResumeList] = useState<any>()
-    useEffect(() =>{
-        getMainResumeList()
-    }, [])
+   /* const fetcher = (url:any, token: string) => fetch(url,{
+        method: "GET",
+        headers: {
+            token: token
+        }
+    }).then(r => {return r.json()})*/
+    const fetcher = (url:any, params: Object) => fetch(url,{
+        method: "GET",
+        headers: {
+            token: localStorage.token
+        }
+    }).then(r => {return r.json()}).then(res => {
+        console.log(res, res.code)
+        if (res && res?.code === "200") {
+            setResumeList(res.data.data)
+        }
+    })
+    // let token;
+    // let data = useSWR([`${baseUrl}/list/mainResume`, localStorage.token], ([url, token]) => fetcher(url, token))
+    let obj = {name: "tree", age: 12}
+    useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
+
     return <div className={style.backlogview}>
         <Row gutter={16}>
             <Col xs={24} sm={12} md={12} lg={12}>

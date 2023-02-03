@@ -1,7 +1,7 @@
 import {Component, FC, lazy, Suspense, useEffect} from 'react'
 import {RouterProvider, Route, BrowserRouter, Routes} from "react-router-dom";
 import App from "../App";
-import {Login, Backlog, Main, Register, Hello, ResumeManagement, UploadTest, router, AddResume} from './routes'
+import {Login, Backlog, Main, Register, Hello, ResumeManagement, UploadTest, Test, router, AddResume} from './routes'
 
 /*const localRouterMap = {
     'App': <App/>,
@@ -30,6 +30,7 @@ const Router: FC = () => {
             <Suspense fallback={'...'}>
                 <Routes>
                     <Route path="/" element={<App/>}>
+                        <Route path="/test" element={<Test/>}></Route>
                         <Route path="/login" element={<Login/>}></Route>
                         <Route path="/register" element={<Register/>}></Route>
                         <Route path="/" element={<Main/>}>

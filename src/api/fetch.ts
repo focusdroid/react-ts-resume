@@ -1,5 +1,11 @@
 import {RefreshToken} from "./index";
 // import {message} from "antd";
+interface MethodsType {
+    POST: string
+    GET: string
+    DELETE: string
+    UPDATE: string
+}
 
 class Request {
     private headers: { token: string };
@@ -8,6 +14,31 @@ class Request {
             token: localStorage.token || ''
         }
         this.refleshToken()
+    }
+    HttpRequest (url: string, methods: string = 'GET', params: any = {}) { // 将所有请求整合移植
+        let fetchOption = {}
+        if (methods.toUpperCase() === "GET") {
+            if (Object.keys(params).length){
+                let paramsArr: Array<any> = []
+                Object.keys(params).forEach(key => paramsArr.push(key + "=" + params[key]))
+                if (url.search(/\?/) === -1) {
+                    url += '?' + paramsArr.join('&')
+                } else {
+                    url += '&' + paramsArr.join('&')
+                }
+            }
+        } else if (methods.toUpperCase() === "POST") {
+            fetchOption = {
+                body: JSON.stringify(params)
+            }
+        }
+
+        return fetch(url,Object.assign(fetchOption, {method: methods.toUpperCase(),headers: this.headers})).then((res: any) => {
+            const { status, ok } = res
+            if (status === 200 && ok) {
+                return res.json()
+            }
+        })
     }
     GetRequest (url: string, params: any = {}) {
         if (Object.keys(params).length){
@@ -61,7 +92,7 @@ class Request {
                 }
             })
             console.log("刷新token", new Date().getTime())
-        }, 1000*60)
+        }, 1000*60*10)
     }
 }
 

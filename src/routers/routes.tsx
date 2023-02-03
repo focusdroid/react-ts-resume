@@ -4,6 +4,7 @@ import React, {lazy} from "react";
 export const App = lazy(() => import("../App"))
 export const Main = lazy(() => import("../view/main/Main"))
 export const Login = lazy(() => import("../view/login/Login"))
+export const Test = lazy(() => import("../view/test/Test"))
 export const Register = lazy(() => import("../view/register/Register"))
 export const Hello = lazy(() => import("../components/hello/Hello"))
 export const Backlog = lazy(() => import("../view/backlog/Backlog"))
@@ -43,6 +44,7 @@ export const router = createBrowserRouter([
 
 export const router = [
     { id: 0, path: '/', component: lazy(() => import("../App")), children: [
+            { id: 10000, path: '/test', component: lazy(() => import("../view/test/Test"))},
             { id: 1, path: '/login', component: lazy(() => import("../view/login/Login"))},
             { id: 2, path: '/register', component: lazy(() => import("../view/register/Register"))},
             { id: 3, path: '/', component: lazy(() => import("../view/main/Main")), children: [

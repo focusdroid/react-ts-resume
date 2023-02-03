@@ -3,6 +3,9 @@ import style from './login.module.css'
 import { user } from '../../utils/type'
 import { LoginReuqest } from '../../api'
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from '../../api/index'
+import Requests from '../../api/fetch'
+import useSWR from "swr";
 const Login = () => {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
@@ -48,6 +51,10 @@ const Login = () => {
         </Card>
     </div>
     function onFinish (values: user) {
+        /*console.log(values)
+        const fetcher = (url: RequestInfo | URL) => fetch(url).then(r => r.json())
+        let data = useSWR(`${baseUrl}/login`, (url) => fetcher(url))
+        console.log(data)*/
         LoginReuqest(values).then((res:any) => {
             const { code, message, token } = res
             if (code === "200") {
