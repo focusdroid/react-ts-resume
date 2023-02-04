@@ -1,11 +1,7 @@
 import {RefreshToken} from "./index";
-// import {message} from "antd";
-interface MethodsType {
-    POST: string
-    GET: string
-    DELETE: string
-    UPDATE: string
-}
+import {parseUrlParams} from "../utils/common";
+import {message} from "antd";
+
 
 class Request {
     private headers: { token: string };
@@ -16,31 +12,29 @@ class Request {
         this.refleshToken()
     }
     HttpRequest (url: string, methods: string = 'GET', params: any = {}) { // 将所有请求整合移植
+        console.log(url, methods, params)
         let fetchOption = {}
         if (methods.toUpperCase() === "GET") {
-            if (Object.keys(params).length){
-                let paramsArr: Array<any> = []
-                Object.keys(params).forEach(key => paramsArr.push(key + "=" + params[key]))
-                if (url.search(/\?/) === -1) {
-                    url += '?' + paramsArr.join('&')
-                } else {
-                    url += '&' + paramsArr.join('&')
-                }
-            }
+            url = parseUrlParams(url, params)
         } else if (methods.toUpperCase() === "POST") {
-            fetchOption = {
-                body: JSON.stringify(params)
-            }
+            fetchOption = {body: JSON.stringify(params)}
         }
-        return fetch(url,Object.assign(fetchOption, {method: methods.toUpperCase(),headers: this.headers})).then((res: any) => {
+        const options = Object.assign(fetchOption, {
+            method: methods.toUpperCase(),
+            headers: this.headers}
+        )
+        return fetch(url,options).then((res: any) => {
             const { status, ok } = res
             if (status === 200 && ok) {
                 return res.json()
             }
         }).then(res => {
-            if (res.code === "2001") {
+            console.log(res, "2222222")
+            if (res.code === "2001") { // token失效跳转登录
                 console.log("token可能失效了")
+                message.warning("token可能失效了")
                 window.location.replace("/login")
+                return
             }
             return res
         })

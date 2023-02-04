@@ -1,4 +1,4 @@
-import {  createBrowserRouter } from "react-router-dom";
+import {createBrowserRouter, createHashRouter, useRoutes} from "react-router-dom";
 import React, {lazy} from "react";
 
 export const App = lazy(() => import("../App"))
@@ -26,22 +26,30 @@ interface Router {
     index?: boolean,
     children?: Array<Router>
 }
+function Other(){
+    return <div>"没有这个页面"</div>
+}
 
-/*
-export const router = createBrowserRouter([
-    { path: '/', element: <App/>, children: [
+let userAuth = [
+    { path: '', element: <App/>, children: [
+            { path: '/test', element: <Test/>},
             { path: '/login', element: <Login/>},
             { path: '/register', element: <Register/>},
             { path: '/', element: <Main/>, children: [
                     {  index: true, path: '/', element: <Backlog/>},
                     {  path: '/resumeManagement', element: <ResumeManagement/>},
-                    {  path: '/hello', element: <Hello/>},
-
+                    {  path: '/hello', auth: "root", element: <Hello/>},
+                    {  path: '/uploadTest', auth: "other", element: <UploadTest/>},
+                    {  path: '/addResume', auth: "other", element: <AddResume/>},
                 ]},
+            { path: '*', element: <Other/>},
         ]}
-])
-*/
+]
 
+export let router = createBrowserRouter(userAuth)
+
+
+/*
 export const router = [
     { id: 0, path: '/', component: lazy(() => import("../App")), children: [
             { id: 10000, path: '/test', component: lazy(() => import("../view/test/Test"))},
@@ -56,3 +64,4 @@ export const router = [
                 ]},
         ]}
 ]
+*/

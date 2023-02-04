@@ -1,7 +1,7 @@
 import {Card, Button, Row, Col, Table, message} from 'antd';
 import style from './backlog.module.css'
 import {Fragment, useEffect, useState} from "react";
-import {GetMainResumeList, modifyMain} from "../../api";
+import {GetMainResumeList, modifyMain, SpaceGETRequest} from "../../api";
 import {ResponseParam, ResumeObj} from "../../utils/type";
 import useSWR from "swr";
 import { baseUrl } from '../../api/index'
@@ -97,12 +97,7 @@ const Backlog = () => {
             token: token
         }
     }).then(r => {return r.json()})*/
-    const fetcher = (url:any, params: Object) => fetch(url,{
-        method: "GET",
-        headers: {
-            token: localStorage.token
-        }
-    }).then(r => {return r.json()}).then(res => {
+    const fetcher = (url:any, params: Object) => SpaceGETRequest(url,params).then(res => {
         console.log(res, res.code)
         if (res && res?.code === "200") {
             setResumeList(res.data.data)
@@ -111,6 +106,7 @@ const Backlog = () => {
     // let token;
     // let data = useSWR([`${baseUrl}/list/mainResume`, localStorage.token], ([url, token]) => fetcher(url, token))
     let obj = {name: "tree", age: 12}
+    // useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
     useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
 
     return <div className={style.backlogview}>

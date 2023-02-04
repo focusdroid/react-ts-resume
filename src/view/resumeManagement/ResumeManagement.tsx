@@ -1,27 +1,32 @@
-import React, {FC, useState} from "react";
+import React, {FC, memo, useCallback, useState} from "react";
 import Search from "./Search"
 import TableList from './TableList'
-import {GetAllResumeList} from "../../api";
+import {baseUrl, GetAllResumeList, SpaceGETRequest,} from "../../api";
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
 import backlog from '../backlog/backlog.module.css'
-const ResumeManagement: FC = () => {
+import useSWR  from 'swr'
+const ResumeManagement = () => {
     const [list, setListData] = useState<ResumeObj>()
+    const getResumeList = (url:string, params: Object) => SpaceGETRequest(url, params).then(res => {
+        const { code, data } = res
+        if (code === "200") {
+            setListData(data.data)
+        }
+    })
+    const obj = {name:"", email:"", pageNum: 1, pageSize: 10, size: 14}
+    useSWR([`${baseUrl}/list/resume`, obj], ([url, obj]) => getResumeList(url, obj))
     return <div className={backlog.backlogview}>
         <Search getAllResumeSource={getAllResumeSource}/>
-        <TableList freshSource={freshSource} list={list}/>
+        <TableList freshSource={getAllResumeSource} list={list}/>
     </div>
     function getAllResumeSource (values: searchField) {
         GetAllResumeList(Object.assign(values, {pageNum: 1, pageSize: 10})).then((res:ResponseParam) => {
-            console.log("code", res)
             const { code, data } = res
             if (code === "200") {
                 setListData(data.data)
             }
         })
     }
-    function freshSource (values: searchField) {
-        getAllResumeSource(values)
-    }
 }
 
-export default ResumeManagement
+export default memo(ResumeManagement)

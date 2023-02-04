@@ -3,9 +3,7 @@ import style from './login.module.css'
 import { user } from '../../utils/type'
 import { LoginReuqest } from '../../api'
 import { useNavigate } from "react-router-dom";
-import { baseUrl } from '../../api/index'
-import Requests from '../../api/fetch'
-import useSWR from "swr";
+import {useEffect} from "react";
 const Login = () => {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
@@ -24,17 +22,17 @@ const Login = () => {
                 <Form.Item
                     label="邮箱"
                     name="email"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
+                    // rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input />
+                    <Input value="focusdroid_go@163.com" />
                 </Form.Item>
 
                 <Form.Item
                     label="密码"
                     name="password"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    // rules={[{ required: true, message: 'Please input your password!' }]}
                 >
-                    <Input.Password />
+                    <Input.Password  value="000000"/>
                 </Form.Item>
                 <div style={{textAlign: 'end', padding: '10px 0'}}>没有账号，<span onClick={goRegister} style={{color: "#0a43fe", cursor: "pointer"}}>去注册</span></div>
 
@@ -55,16 +53,17 @@ const Login = () => {
         const fetcher = (url: RequestInfo | URL) => fetch(url).then(r => r.json())
         let data = useSWR(`${baseUrl}/login`, (url) => fetcher(url))
         console.log(data)*/
-        LoginReuqest(values).then((res:any) => {
+        LoginReuqest(values = {email: "focusdroid_go@163.com", password: "000000"}).then((res:any) => {
             const { code, message, token } = res
             if (code === "200") {
-                localStorage.token = token
+                window.localStorage.token = token
                 return code
             } else {
                 messageApi.open({
                     type: 'warning',
                     content: message,
                 });
+                return
             }
         }).then((code: string) => {
             if (code === "200") {

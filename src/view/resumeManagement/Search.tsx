@@ -1,17 +1,17 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, memo, useEffect} from "react";
 import { useNavigate } from "react-router-dom"
 import { Button, Form, Input, Card, Row,Col } from 'antd';
 import {searchField} from "../../utils/type";
+import useSWR from "swr";
+import {baseUrl} from "../../api";
 interface IProps {
     getAllResumeSource: (values: searchField) => searchField | null | undefined | void | Object
+    // getAllResumeSource: (url: string, params:any) => searchField | null | undefined | void | Object
 }
 const Search: FC<IProps> = (props:IProps, _:any) => {
     const navigate = useNavigate()
     const {getAllResumeSource} = props
     const [form] = Form.useForm();
-    useEffect(() => {
-        getAllResumeSource({name:"", email:""})
-    },[])
     return <Card title="简历管理" style={{width: "100%", height: 200}}>
         <Form
             layout="inline"
@@ -61,4 +61,4 @@ const Search: FC<IProps> = (props:IProps, _:any) => {
     }
 }
 
-export default Search
+export default memo(Search)

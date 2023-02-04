@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, memo, useState} from "react";
 import { levelField } from "../../utils/types"
 import {Button, Card, Row, Col, Drawer, message, Popconfirm, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
@@ -135,7 +135,9 @@ const TableList:FC<IProps> = (props) =>{
             render: (_: any, record: ResumeObj) => <div style={{ display: "flex",
                 flexDirection: "column",
                 alignItems: "center"}}>
-                {!record.follow ? <Button size="small" type="primary" onClick={() => changeFollow(record, "1")}>关注</Button> : <Button size="small" onClick={() => changeFollow(record, '0')}>取消关注</Button> }
+                {!record.follow ?
+                    <Button size="small" type="primary" onClick={() => changeFollow(record, "1")}>关注</Button> :
+                    <Button size="small" onClick={() => changeFollow(record, '0')}>取消关注</Button> }
                 <Popconfirm
                     title="确认删除？"
                     onConfirm={() => deleteConfirm(record)}
@@ -202,4 +204,4 @@ const TableList:FC<IProps> = (props) =>{
     }
 }
 
-export default TableList
+export default memo(TableList)
