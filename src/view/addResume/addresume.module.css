@@ -1,0 +1,13 @@
+.card {
+    width: calc((100% - 80px)/2)
+}
+.cardresume {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 820px;
+    overflow: hidden;
+}
+.pagesetting {
+    display: flex;
+    justify-content: center;
+}

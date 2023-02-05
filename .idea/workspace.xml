@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/addResume/addresume.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/ResumeManagement.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/ResumeManagement.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/Search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/Search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +18,9 @@
       <list>
         <option value="Less File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -96,7 +89,7 @@
       <workItem from="1668396781761" duration="44788000" />
       <workItem from="1670160370784" duration="2193000" />
       <workItem from="1670226746721" duration="127445000" />
-      <workItem from="1674968873876" duration="60296000" />
+      <workItem from="1674968873876" duration="75069000" />
     </task>
     <servers />
   </component>
@@ -140,10 +133,10 @@
       <screen x="0" y="0" width="1474" height="864" />
     </state>
     <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671346616946" />
-    <state x="134" y="79" width="1340" height="785" key="find.popup" timestamp="1675490709179">
+    <state x="134" y="79" width="1340" height="785" key="find.popup" timestamp="1675583554224">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
-    <state x="134" y="79" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675490709179" />
+    <state x="134" y="79" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675583554224" />
     <state x="457" y="203" key="refactoring.ChangeSignatureDialog" timestamp="1675403287052">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
