@@ -131,13 +131,14 @@ const TableList:FC<IProps> = (props) =>{
             dataIndex: 'action',
             key: 'action',
             fixed: 'right' as 'right',
-            width: 100,
+            width: 120,
             render: (_: any, record: ResumeObj) => <div style={{ display: "flex",
                 flexDirection: "column",
                 alignItems: "center"}}>
                 {!record.follow ?
                     <Button size="small" type="primary" onClick={() => changeFollow(record, "1")}>关注</Button> :
                     <Button size="small" onClick={() => changeFollow(record, '0')}>取消关注</Button> }
+                    <Button size="small" style={{marginTop: 4}}>编辑</Button>
                 <Popconfirm
                     title="确认删除？"
                     onConfirm={() => deleteConfirm(record)}

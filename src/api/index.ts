@@ -50,3 +50,6 @@ export function detail(params:Object){
     // return request.GetRequest(`${baseUrl}/list/detail`, params)
     return request.HttpRequest(`${baseUrl}/list/detail`, "GET", params)
 }
+export function addResume(params:Object){ // 添加简历
+    return request.HttpRequest(`${baseUrl}/list/addUserResume`, "post", params)
+}

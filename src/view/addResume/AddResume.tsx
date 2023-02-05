@@ -1,19 +1,12 @@
-import {FC, useState} from "react";
+import {FC, ReactDOM, useState} from "react";
 import GoBack from '../../components/goBack/GoBack'
 import {Card, Row, Col, Form, Input, Button, DatePicker, Select, Upload, UploadProps, message} from "antd";
 import style from './addresume.module.css'
 import { CloudUploadOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import {Document, Page, pdfjs} from "react-pdf";
-import {baseUrl} from "../../api";
+import {addResume, baseUrl} from "../../api";
 import {LoadingOutlined, MinusOutlined, PlusOutlined} from "@ant-design/icons/lib";
-
-const onFinish = (values: any) => {
-    console.log('Success:', values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-};
+import {ResponseParam} from "../../utils/type";
 
 const UserInfo = () =>{
     return <div style={{display: 'flex', justifyContent: "space-between"}}>
@@ -21,24 +14,7 @@ const UserInfo = () =>{
         <div><Button>预览简历</Button></div>
     </div>
 }
-const uploadProps: UploadProps = {
-    name: 'file',
-    action: `${baseUrl}/list/upload`,
-    headers: {
-        authorization: 'authorization-text',
-        token: localStorage.token
-    },
-    onChange(info) {
-        if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-};
+
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cat.net/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
@@ -47,7 +23,57 @@ const AddResume:FC = () => {
     let [pageNumber, setPageNumber] = useState<number>(1);
     let [scale, setScale] = useState<number>(1.2);
     // const [resumeUrl, setResumeUrl] = useState<string>("http://asmie.live:8080/group1/default/20230105/13/47/4/Web前端工程师.pdf?name=Web%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88.pdf")
-    const [resumeUrl, setResumeUrl] = useState<string>("http://www.asmie.live:8080/group1/default/20230205/16/38/4/蚂蚁前端面经.pdf")
+    // const [resumeUrl, setResumeUrl] = useState<string>("http://www.asmie.live:8080/group1/default/20230205/16/38/4/蚂蚁前端面经.pdf")
+    const [resumeUrl, setResumeUrl] = useState<string>()
+    const [form] = Form.useForm();
+    const uploadProps: UploadProps = {
+        name: 'file',
+        action: `/upload`, // 直接使用上传地址
+        headers: {
+            authorization: 'authorization-text',
+            token: localStorage.token
+        },
+        onChange(info) {
+            if (info.file.status !== 'uploading') {
+                console.log(info.file, info.fileList);
+                console.log(info.file.response)
+                const { name, response } = info.file
+                if (name) {
+                    const url = response
+                    setResumeUrl(url.slice(0, url.indexOf("?")))
+                } else {
+                    message.warning("文件名解析不出来")
+                }
+            }
+            if (info.file.status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+    };
+    const onFinish = (values: any) => {
+        console.log('Success:', values);
+        if (!resumeUrl) {
+            message.warning("请上传简历或确定简历上传成功!")
+            return
+        }
+        addResume(Object.assign(values, {resumeUrl: resumeUrl})).then((res: ResponseParam) => {
+            console.log(res)
+            const {code} = res
+            if (code === '200') {
+                message.success(res.message)
+                form.resetFields();
+                setResumeUrl('')
+            } else {
+                message.warning(res.message)
+            }
+        })
+    };
+
+    const onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo);
+    };
     return <div style={{width: "100%"}}>
         <GoBack/>
         <div style={{padding: 10, display: 'flex'}}>
@@ -55,6 +81,7 @@ const AddResume:FC = () => {
             <div className={style.card}>
                 <Card title={<UserInfo/>}>
                     <Form
+                        form={form}
                         name="basic"
                         labelCol={{ span: 6 }}
                         wrapperCol={{ span: 18 }}
@@ -185,7 +212,10 @@ const AddResume:FC = () => {
                             </Col>
                             <Col span={22}>
                                 <Form.Item wrapperCol={{ offset: 6, span: 20 }}>
-                                    <Button block size="large" type="primary" htmlType="submit">
+                                    <Button onClick={() => form.resetFields()}>
+                                        重置
+                                    </Button>
+                                    <Button style={{marginLeft: 10}} type="primary" htmlType="submit">
                                         提交
                                     </Button>
                                 </Form.Item>
@@ -197,25 +227,10 @@ const AddResume:FC = () => {
             {/*左侧视图end*/}
             {/*右侧视图start*/}
             <div className={`${style.card} ${style.cardresume}`}>
-                <Card title="简历预览">
-                    <Upload {...uploadProps}>
-                        <Button type="text" icon={<CloudUploadOutlined />}>选择文件上传</Button>
-                    </Upload>
-                    <div>
-                        <Button type="text">
-                            {pageNumber}
-                        </Button>/
-                        <Button type="text">
-                            {numPages}
-                        </Button>
-                        <Button icon={<LeftOutlined />} disabled={pageNumber <= 1} onClick={prevPage}>上一页</Button>
-                        <Button icon={<RightOutlined />} disabled={pageNumber >= numPages} onClick={nextPage}>下一页</Button>
-                        <Button shape="circle" onClick={() => changeScale('add')} icon={<PlusOutlined />}/>
-                        <Button shape="circle" onClick={() => changeScale('reduce')} icon={<MinusOutlined />}/>
-                    </div>
+                <Card title={<ResumeInfo/>}>
                     <Document
                         loading={<div><LoadingOutlined />加载中...</div>}
-                        noData={<div>没有数据</div>}
+                        noData={<div style={{textAlign: 'center'}}>暂无数据</div>}
                         file={resumeUrl}
                         onLoadSuccess={onDocumentLoadSuccess}
                     >
@@ -227,15 +242,36 @@ const AddResume:FC = () => {
                             className={style.pagesetting}
                             pageNumber={pageNumber}/>
                     </Document>
-                    <div>
+                    {resumeUrl ? <div>
                         当前第 {pageNumber}页 共{numPages}页
-                    </div>
+                    </div> : '' }
                 </Card>
             </div>
             {/*右侧视图end*/}
-
         </div>
     </div>
+    function ResumeInfo(){
+        return <div style={{display: 'flex', justifyContent: "space-between"}}>
+            <div>简历预览</div>
+            {resumeUrl ? <div>
+                <Button type="text">
+                    {pageNumber}
+                </Button>/
+                <Button type="text">
+                    {numPages}
+                </Button>
+                <Button icon={<LeftOutlined />} disabled={pageNumber <= 1} onClick={prevPage}>上一页</Button>
+                <Button icon={<RightOutlined />} disabled={pageNumber >= numPages} onClick={nextPage}>下一页</Button>
+                <Button shape="circle" onClick={() => changeScale('add')} icon={<PlusOutlined />}/>
+                <Button shape="circle" onClick={() => changeScale('reduce')} icon={<MinusOutlined />}/>
+            </div> : null}
+            <div>
+                <Upload {...uploadProps}>
+                    <Button type="text" icon={<CloudUploadOutlined />}>{resumeUrl ? '重新上传' : '选择文件上传'}</Button>
+                </Upload>
+            </div>
+        </div>
+    }
     function onDocumentLoadSuccess({ numPages }:{numPages: any}) { // 获取pdf页面总数
         console.log(`获取第${numPages}页`)
         setNumPages(numPages);
