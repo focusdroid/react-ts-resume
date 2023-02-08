@@ -3,19 +3,16 @@ import Header from "../../components/header/Header";
 import LeftMenu from "../../components/leftMenu/LeftMenu";
 import styles from "./main.module.css"
 import {isLine} from "../../api";
-// @ts-ignore
-function RequireAuth({children}):any{
-    // const authed = localStorage.getItem("token")
-    console.log("localStorage.token", window.localStorage.token)
-    if (window.localStorage.token) {
+function RequireAuth({children}:{children: JSX.Element|JSX.Element[]}):any{
+    isLine().then(res=>{ // 验证有效期
+        console.log(res)
+        const { code } = res
+        if (code !== '200') {
+            return children
+        }
         return children
-    } else {
-        console.log("main component")
-        isLine().then(res=>{ // 验证有效期
-            console.log(res)
-        })
-        // window.location.replace("/login")
-    }
+    })
+    return children
 }
 function Main() {
     return <div>

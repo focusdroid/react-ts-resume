@@ -90,6 +90,7 @@ const Register: FC = () => {
                 type: 'warning',
                 content: "邮箱格式不符合",
             });
+            return
         }
         let timer: string | number | NodeJS.Timer | undefined
         setDisabled(true)

@@ -1,8 +1,6 @@
 import { user, searchField } from '../utils/type'
 import request from './fetch'
-import {url} from "inspector";
 
-// export const baseUrl = "/api"
 export const baseUrl = "/api"
 export function SpaceGETRequest(url: string, params: any){
     return request.HttpRequest(url, "GET", params)

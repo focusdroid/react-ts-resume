@@ -12,7 +12,10 @@ const Search: FC<IProps> = (props:IProps, _:any) => {
     const navigate = useNavigate()
     const {getAllResumeSource} = props
     const [form] = Form.useForm();
-    return <Card title="简历管理" style={{width: "100%", height: 200}}>
+    return <Card title={<div style={{display: 'flex', justifyContent: "space-between"}}>
+        <div>简历管理</div>
+        <Button type="primary" onClick={addResume}>添加简历</Button>
+    </div>} style={{width: "100%", height: 200}}>
         <Form
             layout="inline"
             form={form}
@@ -22,12 +25,12 @@ const Search: FC<IProps> = (props:IProps, _:any) => {
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <Col>
                     <Form.Item label="姓名" name="name">
-                        <Input />
+                        <Input allowClear />
                     </Form.Item>
                 </Col>
                 <Col>
                     <Form.Item label="邮箱" name="email">
-                        <Input />
+                        <Input allowClear />
                     </Form.Item>
                 </Col>
             </Row>
@@ -44,14 +47,10 @@ const Search: FC<IProps> = (props:IProps, _:any) => {
                 </Col>
             </Row>
         </Form>
-        <Row gutter={{ xs: 24, sm: 24, md: 24, lg: 24 }}>
-            <Col span={24}>
-                <Button onClick={addResume} style={{margin: "20px 0"}}>添加简历</Button>
-            </Col>
-        </Row>
     </Card>;
     function reset (){
         form.resetFields();
+        getAllResumeSource({name: '', email: ''})
     }
     function onFinish (values: searchField) {
         getAllResumeSource(values)

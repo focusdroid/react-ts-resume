@@ -79,6 +79,11 @@ class Request {
         })
     }
     refleshToken () {
+        const path = window.location.pathname
+        const disabledPath = ['/login', '/register']
+        if (disabledPath.includes(path)) {
+            return;
+        }
         let timer
         if (timer) {
             return

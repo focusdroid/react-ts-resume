@@ -2,6 +2,7 @@ import TestSon from './TestSon'
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {GetMainResumeList} from "../../api";
 import {ResponseParam} from "../../utils/type";
+import TodoList from './TodoList'
 const Test = () => {
     let [count, setCount] = useState<number>(0)
     let [count2, setCount2] = useState<number>(12)
@@ -11,6 +12,7 @@ const Test = () => {
     const result = useMemo(() => addNumber(count, count2), [count])
     console.log("父组件渲染")
     return (<div>
+        <TodoList/>
         <div>123---{count} --- result -- </div>
         <button onClick={add}>+</button>
         {/*<button onClick={addNumber}>相加计算</button>*/}

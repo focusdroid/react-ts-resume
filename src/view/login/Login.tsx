@@ -3,13 +3,12 @@ import style from './login.module.css'
 import { user } from '../../utils/type'
 import { LoginReuqest } from '../../api'
 import { useNavigate } from "react-router-dom";
-import {useEffect} from "react";
 const Login = () => {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
     return <div className={style.loginBox}>
         {contextHolder}
-        <Card style={{width: 500, height: 260}}>
+        <Card style={{width: 500, height: 340}}>
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
