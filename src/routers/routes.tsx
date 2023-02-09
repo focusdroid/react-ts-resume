@@ -19,33 +19,36 @@ import Hello from "../components/hello/Hello"
 import Backlog from "../view/backlog/Backlog"
 import ResumeManagement from "../view/resumeManagement/ResumeManagement"*/
 
-interface Router {
-    id: number,
+/*interface Router {
+    id?: number,
     path: string,
     component: any,
     index?: boolean,
     children?: Array<Router>
-}
+}[]*/
+
+
 function Other(){
     return <div>"没有这个页面"</div>
 }
 
 let userAuth = [
-    { path: '', element: <App/>, children: [
-            { path: '/test', element: <Test/>},
-            { path: '/login', element: <Login/>},
-            { path: '/register', element: <Register/>},
-            { path: '/', element: <Main/>, children: [
-                    {  index: true, path: '/', element: <Backlog/>},
-                    {  path: '/resumeManagement', element: <ResumeManagement/>},
-                    {  path: '/hello', auth: "root", element: <Hello/>},
-                    {  path: '/uploadTest', auth: "other", element: <UploadTest/>},
-                    {  path: '/addResume', auth: "other", element: <AddResume/>},
+    { id: 1, path: '', element: <App/>, children: [
+            { id: 11, path: '/test', element: <Test/>},
+            { id: 12, path: '/login', element: <Login/>},
+            { id: 13, path: '/register', element: <Register/>},
+            { id: 14, path: '/', element: <Main/>, children: [
+                    {  id: 141, index: true, path: '/', element: <Backlog/>},
+                    {  id: 142, path: '/resumeManagement', element: <ResumeManagement/>},
+                    {  id: 143, path: '/hello', auth: "root", element: <Hello/>},
+                    {  id: 144, path: '/uploadTest', auth: "other", element: <UploadTest/>},
+                    {  id: 145, path: '/addResume', auth: "other", element: <AddResume/>},
+                    {  id: 146, path: '/editResume', auth: "other", element: <AddResume/>},
                 ]},
-            { path: '*', element: <Other/>},
+            { id: 15, path: '*', element: <Other/>},
         ]}
 ]
-
+// @ts-ignore
 export let router = createBrowserRouter(userAuth)
 
 

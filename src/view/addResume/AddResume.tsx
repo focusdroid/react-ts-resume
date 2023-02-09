@@ -1,76 +1,71 @@
-import {FC, ReactDOM, useState} from "react";
+import { useEffect, useState} from "react";
 import GoBack from '../../components/goBack/GoBack'
 import {Card, Row, Col, Form, Input, Button, DatePicker, Select, Upload, UploadProps, message} from "antd";
 import style from './addresume.module.css'
-import { CloudUploadOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
-import {Document, Page, pdfjs} from "react-pdf";
-import {addResume, baseUrl} from "../../api";
-import {LoadingOutlined, MinusOutlined, PlusOutlined} from "@ant-design/icons/lib";
-import {ResponseParam} from "../../utils/type";
-
+import {addResume, detail, updateResumeInfo} from "../../api";
+import {ResponseDetailParam, ResponseParam, ResumeObj} from "../../utils/type";
+import UplaodPreview from "./UplaodPreview";
+import { useLocation } from 'react-router-dom'
 const UserInfo = () =>{
     return <div style={{display: 'flex', justifyContent: "space-between"}}>
         <div>个人信息</div>
         <div><Button>预览简历</Button></div>
     </div>
 }
-
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cat.net/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
-
-const AddResume:FC = () => {
-    const [numPages, setNumPages] = useState<number>(1);
-    let [pageNumber, setPageNumber] = useState<number>(1);
-    let [scale, setScale] = useState<number>(1.2);
-    // const [resumeUrl, setResumeUrl] = useState<string>("http://asmie.live:8080/group1/default/20230105/13/47/4/Web前端工程师.pdf?name=Web%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88.pdf")
-    // const [resumeUrl, setResumeUrl] = useState<string>("http://www.asmie.live:8080/group1/default/20230205/16/38/4/蚂蚁前端面经.pdf")
-    const [resumeUrl, setResumeUrl] = useState<string>()
+const AddResume = () => {
+    let [resumeUrl, setResumeUrl] = useState<string | undefined>('')
     const [form] = Form.useForm();
-    const uploadProps: UploadProps = {
-        name: 'file',
-        action: `/upload`, // 直接使用上传地址
-        headers: {
-            authorization: 'authorization-text',
-            token: localStorage.token
-        },
-        onChange(info) {
-            if (info.file.status !== 'uploading') {
-                console.log(info.file, info.fileList);
-                console.log(info.file.response)
-                const { name, response } = info.file
-                if (name) {
-                    const url = response
-                    setResumeUrl(url.slice(0, url.indexOf("?")))
-                } else {
-                    message.warning("文件名解析不出来")
+    const location = useLocation()
+    console.log(location, location.state)
+    // 编辑获取详情页面start
+    useEffect(() =>{
+        const { state } = location
+        if (state) {
+            detail({id: state.id}).then((res: ResponseDetailParam) => {
+                console.log(res)
+                const {code, data} = res
+                if (code === '200') {
+                    const { resume_url } = data as ResumeObj
+                    form.setFieldsValue(data)
+                    setResumeUrl(resume_url)
                 }
-            }
-            if (info.file.status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully`);
-            } else if (info.file.status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
-        },
-    };
+            })
+        }
+
+    }, [])
+    // 编辑获取详情页面end
+
     const onFinish = (values: any) => {
         console.log('Success:', values);
         if (!resumeUrl) {
             message.warning("请上传简历或确定简历上传成功!")
             return
         }
-        addResume(Object.assign(values, {resumeUrl: resumeUrl})).then((res: ResponseParam) => {
-            console.log(res)
-            const {code} = res
-            if (code === '200') {
-                message.success(res.message)
-                form.resetFields();
-                setResumeUrl('')
-            } else {
-                message.warning(res.message)
-            }
-        })
-    };
+        if (location.state.id) { // updateResumeInfo
+            console.log(location.state.id)
+            updateResumeInfo(Object.assign(values, {id: location.state.id.toString(), resumeUrl: resumeUrl})).then((res: ResponseParam) => {
+                const {code} = res
+                if (code === '200') {
+                    message.success(res.message)
+                } else {
+                    message.warning(res.message)
+                }
+            })
+        } else {
+            addResume(Object.assign(values, {resumeUrl: resumeUrl})).then((res: ResponseParam) => {
+                console.log(res)
+                const {code} = res
+                if (code === '200') {
+                    message.success(res.message)
+                    form.resetFields();
+                    setResumeUrl('')
+                } else {
+                    message.warning(res.message)
+                }
+            })
+        }
 
+    };
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
@@ -226,84 +221,12 @@ const AddResume:FC = () => {
             </div>
             {/*左侧视图end*/}
             {/*右侧视图start*/}
-            <div className={`${style.card} ${style.cardresume}`}>
-                <Card title={<ResumeInfo/>}>
-                    <Document
-                        loading={<div><LoadingOutlined />加载中...</div>}
-                        noData={<div style={{textAlign: 'center'}}>暂无数据</div>}
-                        file={resumeUrl}
-                        onLoadSuccess={onDocumentLoadSuccess}
-                    >
-                        <Page
-                            scale={scale}
-                            renderTextLayer={false}
-                            renderAnnotationLayer={false}
-                            renderMode="canvas"
-                            className={style.pagesetting}
-                            pageNumber={pageNumber}/>
-                    </Document>
-                    {resumeUrl ? <div>
-                        当前第 {pageNumber}页 共{numPages}页
-                    </div> : '' }
-                </Card>
-            </div>
+            <UplaodPreview resumeUrl={resumeUrl} setResumeUrl={setChangeResumeUrl}/>
             {/*右侧视图end*/}
         </div>
     </div>
-    function ResumeInfo(){
-        return <div style={{display: 'flex', justifyContent: "space-between"}}>
-            <div>简历预览</div>
-            {resumeUrl ? <div>
-                <Button type="text">
-                    {pageNumber}
-                </Button>/
-                <Button type="text">
-                    {numPages}
-                </Button>
-                <Button icon={<LeftOutlined />} disabled={pageNumber <= 1} onClick={prevPage}>上一页</Button>
-                <Button icon={<RightOutlined />} disabled={pageNumber >= numPages} onClick={nextPage}>下一页</Button>
-                <Button shape="circle" onClick={() => changeScale('add')} icon={<PlusOutlined />}/>
-                <Button shape="circle" onClick={() => changeScale('reduce')} icon={<MinusOutlined />}/>
-            </div> : null}
-            <div>
-                <Upload {...uploadProps}>
-                    <Button type="text" icon={<CloudUploadOutlined />}>{resumeUrl ? '重新上传' : '选择文件上传'}</Button>
-                </Upload>
-            </div>
-        </div>
-    }
-    function onDocumentLoadSuccess({ numPages }:{numPages: any}) { // 获取pdf页面总数
-        console.log(`获取第${numPages}页`)
-        setNumPages(numPages);
-    }
-    function changeScale(field: string){
-        if (field === 'add'){
-            if (scale >= 1.7) {
-                return
-            } else {
-                setScale(scale+=0.1)
-            }
-        } else if (field === 'reduce') {
-            if (scale <= 0.7) {
-                return
-            } else {
-                setScale(scale-=0.1)
-            }
-        }
-    }
-    function prevPage (){ // 展示上一页
-        if (pageNumber <= 1){
-            return
-        } else {
-            setPageNumber(pageNumber-=1)
-        }
-    }
-    function nextPage () {// 展示下一页
-        if (pageNumber > numPages){
-            return
-        } else {
-            setPageNumber(pageNumber+=1)
-        }
+    function setChangeResumeUrl(url:string){
+        setResumeUrl(url)
     }
 }
 

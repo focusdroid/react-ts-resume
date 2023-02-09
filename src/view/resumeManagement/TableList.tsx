@@ -1,7 +1,8 @@
 import React, {FC, memo, useState} from "react";
-import { levelField } from "../../utils/types"
+import { useNavigate } from "react-router-dom"
 import {Button, Card, Row, Col, Drawer, message, Popconfirm, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
+import { levelField } from '../../utils/types'
 import {deleteResume, detail, modifyMain} from "../../api";
 import styles from './resume.module.css'
 interface IProps {
@@ -16,11 +17,10 @@ interface IProps {
     width: number
     fixed?: string | boolean
 }*/
-
-
 const TableList:FC<IProps> = (props) =>{
     const [open, setOpen] = useState<boolean>(false);
     const [resumeDetail, setResumeDetail] = useState<ResumeObj>()
+    const navigator = useNavigate()
     const columns = [
         {
             title: '姓名',
@@ -138,7 +138,7 @@ const TableList:FC<IProps> = (props) =>{
                 {!record.follow ?
                     <Button size="small" type="primary" onClick={() => changeFollow(record, "1")}>关注</Button> :
                     <Button size="small" onClick={() => changeFollow(record, '0')}>取消关注</Button> }
-                    <Button size="small" style={{marginTop: 4}}>编辑</Button>
+                    <Button size="small" onClick={() => editItem(record)} style={{marginTop: 4}}>编辑</Button>
                 <Popconfirm
                     title="确认删除？"
                     onConfirm={() => deleteConfirm(record)}
@@ -174,6 +174,10 @@ const TableList:FC<IProps> = (props) =>{
                 message.error(res.message)
             }
         })
+    }
+    function editItem (record: ResumeObj) {
+        console.log(record)
+        navigator('/editResume', { state: {id: record?.id} })
     }
     function deleteConfirm (ele: ResumeObj) {
         // console.log(e);

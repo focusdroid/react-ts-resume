@@ -51,3 +51,6 @@ export function detail(params:Object){
 export function addResume(params:Object){ // 添加简历
     return request.HttpRequest(`${baseUrl}/list/addUserResume`, "post", params)
 }
+export function updateResumeInfo(params:Object){ // 添加简历
+    return request.HttpRequest(`${baseUrl}/list/updateInfo`, "post", params)
+}
