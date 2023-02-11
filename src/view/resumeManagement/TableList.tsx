@@ -6,17 +6,10 @@ import { levelField } from '../../utils/types'
 import {deleteResume, detail, modifyMain} from "../../api";
 import styles from './resume.module.css'
 interface IProps {
-    list: any,
-    freshSource: (values: searchField) => searchField | null | undefined | void
+    list?: any,
+    freshSource?: (values: searchField) => searchField | null | undefined | void
 }
 
-/*interface ColumnType {
-    title: string
-    dataIndex: string
-    key: Key
-    width: number
-    fixed?: string | boolean
-}*/
 const TableList:FC<IProps> = (props) =>{
     const [open, setOpen] = useState<boolean>(false);
     const [resumeDetail, setResumeDetail] = useState<ResumeObj>()
@@ -153,8 +146,9 @@ const TableList:FC<IProps> = (props) =>{
     function getLevelField(level: string | undefined, jobbed: string | undefined) {
         return `${levelField.get(level as string)} ${jobbed}`
     }
-    const {list, freshSource} = props
+    const {list} = props
     return <Table
+        style={{marginTop: 10}}
         rowKey={(record:any)=> record.id}
         bordered
         scroll={{ x: 1800 }}
@@ -205,7 +199,9 @@ const TableList:FC<IProps> = (props) =>{
         setOpen(false);
     }
     function freshRequest () {
-        freshSource({name: '', email: ''})
+        if (props.freshSource) {
+            props?.freshSource({name: '', email: ''})
+        }
     }
 }
 

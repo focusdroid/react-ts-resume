@@ -12,7 +12,7 @@ export declare interface ResponseParam { // 公共返回限制
 }
 export declare interface ResponseDetailParam { // 公共返回限制
     code?: string | number
-    data?: ResumeObj
+    data?: ResumeObj | any
     message?: string
 }
 
@@ -71,3 +71,11 @@ export declare interface ResumeList { // 简历人员列表
     time_induction: string
     user_id: string
 }[] | undefined
+
+export declare interface BacklogList {
+    backlog_status: number
+    backlog_text: string
+    backlog_type: number
+    id: number
+    user_id: string
+}

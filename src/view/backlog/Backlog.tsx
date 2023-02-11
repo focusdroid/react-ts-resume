@@ -1,162 +1,27 @@
-import {Card, Button, Row, Col, Table, message} from 'antd';
+import Notes from './Notes'
 import style from './backlog.module.css'
-import {Fragment, useEffect, useState} from "react";
-import {GetMainResumeList, modifyMain, SpaceGETRequest} from "../../api";
-import {ResponseParam, ResumeObj} from "../../utils/type";
+import {useState} from "react";
+import {SpaceGETRequest} from "../../api";
 import useSWR from "swr";
 import { baseUrl } from '../../api/index'
-
-const detailCurrent = (ele:ResumeObj) => {
-    console.log(ele)
-}
-const deleteItem = (ele:ResumeObj) => {
-    console.log(ele)
-}
+import TableList from "../resumeManagement/TableList";
+import {ResumeList} from "../../utils/type";
 
 const Backlog = () => {
-    const columns = [
-        {
-            title: '姓名',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: '岗位/级别',
-            dataIndex: 'level',
-            key: 'level',
-        },
-        {
-            title: '邮箱',
-            dataIndex: 'phone',
-            key: 'phone',
-        },
-        {
-            title: '邮箱',
-            dataIndex: 'email',
-            key: 'email',
-        },
-        {
-            title: '性别',
-            dataIndex: 'gender',
-            key: 'gender',
-        },
-        {
-            title: '岗位目标公司',
-            dataIndex: 'target_company',
-            key: 'target_company',
-        },
-        {
-            title: '首次联系时间',
-            dataIndex: 'first_contact_time',
-            key: 'first_contact_time',
-        },
-        {
-            title: '入职意向',
-            dataIndex: 'employment_intention',
-            key: 'employment_intention',
-        },
-        {
-            title: '是否确认入职',
-            dataIndex: 'confirm_enrollment',
-            key: 'confirm_enrollment',
-        },
-        {
-            title: '岗位工资',
-            dataIndex: 'post_salary',
-            key: 'post_salary',
-        },
-        {
-            title: '最后确认工资',
-            dataIndex: 'post_salary',
-            key: 'post_salary',
-        },
-        {
-            title: '入职时间',
-            dataIndex: 'time_induction',
-            key: 'time_induction',
-        },
-        {
-            title: '操作',
-            key: 'action',
-            fixed: 'right' as 'right',
-            align: 'center' as 'center',
-            width: 140,
-            render: (_: any, record: ResumeObj) => (
-                <Fragment>
-                    <Button onClick={() => cancelFollow(record)} style={{marginTop: 10}}>取消关注</Button>
-                    <Button onClick={() => detailCurrent(record)} style={{marginTop: 10}} type="primary">详情</Button>
-                    <Button onClick={() => deleteItem(record)} style={{marginTop: 10}} danger type="primary">删除</Button>
-                </Fragment>
-            )
-        },
-    ];
-    const [lists, setResumeList] = useState<any>()
-   /* const fetcher = (url:any, token: string) => fetch(url,{
-        method: "GET",
-        headers: {
-            token: token
-        }
-    }).then(r => {return r.json()})*/
-    const fetcher = (url:any, params: Object) => SpaceGETRequest(url,params).then(res => {
-        console.log(res, res.code)
+    const [list, setResumeList] = useState<ResumeList>()
+    const fetcher = (url:string, params?: Object) => SpaceGETRequest(url,params).then(res => {
         if (res && res?.code === "200") {
             setResumeList(res.data.data)
         }
     })
-    // let token;
-    // let data = useSWR([`${baseUrl}/list/mainResume`, localStorage.token], ([url, token]) => fetcher(url, token))
-    let obj = {name: "tree", age: 12}
-    // useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
+    let obj = {name: "tree", age: 12} // 测试
     useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
-
     return <div className={style.backlogview}>
-        <Row gutter={16}>
-            <Col xs={24} sm={12} md={12} lg={12}>
-                <Card size="small" title="今日待办" extra={<Button type="text">编辑</Button>} className={style.cardstyle}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-            </Col>
-            <Col xs={24} sm={12} md={12} lg={12} >
-                <Card size="small" title="工作便签" extra={<Button type="text">编辑</Button>} className={style.cardstyle}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-            </Col>
-        </Row>
-        <div></div>
-        <Card title="重点关注人群" style={{padding: 0}}>
-            <Table
-                scroll={{x: 1800}}
-                rowKey={(record:any)=> record.id}
-                bordered
-                dataSource={lists}
-                columns={columns}/>
-        </Card>
+        <Notes/>
+        <TableList list={list} freshSource={freshDataSource}/>
     </div>
-    function getMainResumeList () {
-        GetMainResumeList().then((res:ResponseParam) => {
-            const { code, data } = res
-            if (code === "200") {
-                setResumeList(data.data)
-            }
-        })
-    }
-    function cancelFollow (ele:ResumeObj ) {
-        modifyMain({
-            id: ele?.id,
-            status: "0",
-        }).then((res:any) => {
-            const { code } = res
-            if (code === '200') {
-                message.success(res.message)
-                getMainResumeList()
-            } else if (code === '-1') {
-                message.error(res.message)
-            }
-        })
+    function freshDataSource (){
+        fetcher(`${baseUrl}/list/mainResume`, '')
     }
 }
 

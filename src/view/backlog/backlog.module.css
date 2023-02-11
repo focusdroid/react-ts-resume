@@ -10,3 +10,18 @@
 .cardstyle .ant-card-body {
     max-height: 260px;
 }
+.backbox {
+    display: flex;
+    justify-content: space-between;
+}
+.divitem {
+    width: 10%;
+}
+.backinput {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.ml10 {
+    margin-left: 10px;
+}
