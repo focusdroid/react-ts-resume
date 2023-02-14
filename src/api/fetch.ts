@@ -24,12 +24,25 @@ class Request {
             headers: this.headers}
         )
         return fetch(url,options).then((res: any) => {
+            console.log("res--->", res)
+            /*const total = res.headers.get('content-length')
+            const decoder = new TextDecoder()
+            const reader = res.body.getReader()
+            let loaded = 0
+
+            while (1) {
+                const { done, value } = await reader.read()
+                if (done) {
+                    break;
+                }
+                loaded += value.length
+            }*/
             const { status, ok } = res
             if (status === 200 && ok) {
                 return res.json()
             }
         }).then(res => {
-            console.log(res, "2222222")
+            console.log("res",res)
             if (res.code === "2001") { // token失效跳转登录
                 console.log("token可能失效了")
                 message.warning("token可能失效了")

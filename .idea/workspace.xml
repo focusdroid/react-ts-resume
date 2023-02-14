@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/type.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Backlog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/backlog/backlog.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/backlog.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/resumeManagement/TableList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +92,8 @@
       <workItem from="1670160370784" duration="2193000" />
       <workItem from="1670226746721" duration="127445000" />
       <workItem from="1674968873876" duration="96434000" />
-      <workItem from="1675866307818" duration="21524000" />
+      <workItem from="1675866307818" duration="25453000" />
+      <workItem from="1676263288223" duration="4343000" />
     </task>
     <servers />
   </component>
@@ -138,10 +137,10 @@
       <screen x="0" y="0" width="1474" height="864" />
     </state>
     <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671346616946" />
-    <state x="134" y="79" width="1340" height="785" key="find.popup" timestamp="1675858602508">
+    <state x="134" y="79" width="1340" height="785" key="find.popup" timestamp="1676106737063">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
-    <state x="134" y="79" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675858602508" />
+    <state x="134" y="79" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1676106737063" />
     <state x="457" y="203" key="refactoring.ChangeSignatureDialog" timestamp="1675930883677">
       <screen x="0" y="0" width="1474" height="864" />
     </state>
