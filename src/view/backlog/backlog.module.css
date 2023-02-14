@@ -4,8 +4,8 @@
 }
 .cardstyle {
     width: 100%;
-    max-height: 260px;
-
+    height: 400px;
+    min-height: 260px;
 }
 .cardstyle .ant-card-body {
     max-height: 260px;
@@ -24,4 +24,7 @@
 }
 .ml10 {
     margin-left: 10px;
+}
+.point {
+    cursor: pointer;
 }

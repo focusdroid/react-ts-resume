@@ -1,4 +1,4 @@
-import {Button, Card, Col, Row, Input, List, Typography, Tag, Avatar} from "antd";
+import {Button, Card, Col, Row, Input, List, Typography, Tag, Avatar, Popconfirm} from "antd";
 import style from "./backlog.module.css";
 import React, {memo, useState} from "react";
 import VirtualList from 'rc-virtual-list';
@@ -27,6 +27,29 @@ const BackTitle = memo(() => {
     }
 })
 
+interface DeleteComponentIprops {
+    item: BacklogList
+}
+
+const DeleteComponent = (props: DeleteComponentIprops)=> {
+    return <Popconfirm
+        key={props?.item.id}
+        title="确定删除?"
+        onConfirm={() => deleteConfirm(props?.item)}
+        onCancel={() => deleteCancel(props?.item)}
+        okText="确定"
+        cancelText="取消"
+    >
+        <Tag className={style.point}>删除</Tag>
+    </Popconfirm>
+    function deleteConfirm (item: BacklogList) {
+        console.log(item);
+    }
+    function deleteCancel (item: BacklogList) {
+        console.log(item);
+    }
+}
+
 const Notes = () => {
     const [list, setList] = useState<BacklogList[]>([])
     const fetcher = (url: string) => SpaceGETRequest(url).then((res:ResponseDetailParam) => {
@@ -41,16 +64,18 @@ const Notes = () => {
             <Card size="small" title={<BackTitle/>} className={style.cardstyle}>
                 <Row gutter={16}>
                     <Col span={12}>
-                        <List>
+                        <List
+                            bordered
+                            style={{marginBottom: 20, overflowY: 'scroll', height: 300, minHeight: 300}}
+                        >
                             <VirtualList
                                 data={list}
-                                height={400}
-                                itemHeight={47}
                                 itemKey="backlog_text"
                             >
                                 {(item:BacklogList, index: number) => (
-                                    <List.Item>
-                                        <Tag color="#f50">删除</Tag>
+                                    <List.Item key={item.id}>
+                                        <DeleteComponent item={item}/>
+                                        <Tag className={style.point} color="#069d05">置为已完成</Tag>
                                         <Typography.Text>{index+1}.</Typography.Text>
                                         {item.backlog_text}
                                     </List.Item>
@@ -60,13 +85,13 @@ const Notes = () => {
                     </Col>
                     <Col span={12}>
                         <List
-                            header={<div>已完成</div>}
                             bordered
+                            style={{marginBottom: 20, overflowY: 'scroll', height: 300, minHeight: 300}}
                             dataSource={list}
                             renderItem={(item: BacklogList,index: number) => (
-                                <List.Item>
-                                    <Tag color="#f50">删除</Tag>
-                                    <Tag color="#87d068">已完成</Tag>
+                                <List.Item key={item.id}>
+                                    <DeleteComponent item={item}/>
+                                    <Tag className={style.point} color="#069d05">已完成</Tag>
                                     <Typography.Text>{index+1}.</Typography.Text>
                                     {item.backlog_text}
                                 </List.Item>
@@ -77,6 +102,5 @@ const Notes = () => {
             </Card>
         </Col>
     </Row>
-
 }
 export default Notes
