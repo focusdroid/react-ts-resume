@@ -14,6 +14,7 @@ export declare interface ResponseDetailParam { // 公共返回限制
     code?: string | number
     data?: ResumeObj | any
     message?: string
+    backlog_type?: number | string | undefined
 }
 
 export declare  interface PageParam {
