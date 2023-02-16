@@ -1,6 +1,7 @@
 import { user, searchField } from '../utils/type'
 import request from './fetch'
 export const baseUrl = "/api"
+export const getBacklogListUrl = `${baseUrl}/backlog/getBacklogList`
 export function SpaceGETRequest(url: string, params: any = {}){
     return request.HttpRequest(url, "GET", params)
 }

@@ -2,7 +2,7 @@ import {Button, Card, Col, Row, Input, List, Typography, Tag, Avatar, Popconfirm
 import style from "./backlog.module.css";
 import React, {memo, useState} from "react";
 import VirtualList from 'rc-virtual-list';
-import {baseUrl, SpaceGETRequest, addBacklog, changeBackStatus} from "../../api";
+import {baseUrl, SpaceGETRequest, addBacklog, changeBackStatus, getBacklogListUrl} from "../../api";
 import useSWR from "swr";
 import {BacklogList, ResponseDetailParam} from "../../utils/type";
 
@@ -76,11 +76,11 @@ const Notes = () => {
     })
     const obj = { backlog_type: 1 }
     const obj2 = { backlog_type: 2 }
-    useSWR([`${baseUrl}/backlog/getBacklogList`, obj], ([url, obj]) => fetcher(url, obj))
-    useSWR([`${baseUrl}/backlog/getBacklogList`, obj2], ([url, obj]) => fetcher(url, obj))
+    useSWR([getBacklogListUrl, obj], ([url, obj]) => fetcher(url, obj))
+    useSWR([getBacklogListUrl, obj2], ([url, obj]) => fetcher(url, obj))
     function freshBack (){
-        fetcher(`${baseUrl}/backlog/getBacklogList`, obj)
-        fetcher(`${baseUrl}/backlog/getBacklogList`, obj2)
+        fetcher(getBacklogListUrl, obj)
+        fetcher(getBacklogListUrl, obj2)
     }
     return <Row gutter={16}>
         <Col xs={24} sm={24} md={24} lg={24}>
