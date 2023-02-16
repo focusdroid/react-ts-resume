@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/view/backlog/BackTitle.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/backlog/DeleteComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +91,7 @@
       <workItem from="1674968873876" duration="96434000" />
       <workItem from="1675866307818" duration="25453000" />
       <workItem from="1676263288223" duration="15312000" />
-      <workItem from="1676454668520" duration="8861000" />
+      <workItem from="1676454668520" duration="10658000" />
     </task>
     <servers />
   </component>

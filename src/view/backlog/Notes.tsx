@@ -1,67 +1,12 @@
-import {Button, Card, Col, Row, Input, List, Typography, Tag, Avatar, Popconfirm} from "antd";
-import style from "./backlog.module.css";
-import React, {memo, useState} from "react";
+import React, { useState} from "react";
+import { Card, Col, Row, List, Typography, Tag} from "antd";
+import BackTitle from './BackTitle'
+import DeleteComponent from './DeleteComponent'
 import VirtualList from 'rc-virtual-list';
-import {baseUrl, SpaceGETRequest, addBacklog, changeBackStatus, getBacklogListUrl} from "../../api";
+import {SpaceGETRequest, getBacklogListUrl, changeBackStatus} from "../../api";
 import useSWR from "swr";
 import {BacklogList, ResponseDetailParam} from "../../utils/type";
-
-interface NoteIprops {
-    freshBack: () => void
-}
-const BackTitle = (props: NoteIprops, _:any) => {
-    const [text, setText] = useState<string | undefined>()
-    return <div className={style.backbox}>
-        <div className={style.divitem}>今日待办</div>
-        <div className={style.backinput}>
-            <Input type="text" value={text} onChange={(e) => getInputValue(e.target.value)}/>
-            <Button onClick={addBack} className={style.ml10} type="primary">添加待办</Button>
-        </div>
-    </div>
-    function getInputValue(value:string){
-        setText(value)
-    }
-    function addBack (){
-        addBacklog({backlogText: text}).then((res:ResponseDetailParam) => {
-            if (res && res.code === '200'){
-                setText('')
-                props?.freshBack()
-            }
-        })
-    }
-}
-
-interface DeleteComponentIprops {
-    item: BacklogList,
-    freshBack: () => void
-}
-
-const DeleteComponent = (props: DeleteComponentIprops)=> {
-    return <Popconfirm
-        key={props?.item.id}
-        title="确定删除?"
-        onConfirm={() => deleteConfirm(props?.item)}
-        okText="确定"
-        cancelText="取消"
-    >
-        <Tag className={style.point}>删除</Tag>
-    </Popconfirm>
-    function deleteConfirm (item: BacklogList) {
-        console.log(item);
-        const obj = {
-            id: item?.id,
-            backlog_type: item.backlog_type,
-            backlog_status: 0, // 0是删除状态
-        }
-        changeBackStatus(obj).then((res: ResponseDetailParam) => {
-            console.log(res)
-            const { code } = res
-            if (code === '200') {
-                props?.freshBack()
-            }
-        })
-    }
-}
+import style from "./backlog.module.css";
 
 const Notes = () => {
     const [list, setBackList] = useState<BacklogList[]>([])
@@ -98,7 +43,7 @@ const Notes = () => {
                                 {(item:BacklogList, index: number) => (
                                     <List.Item key={item.id}>
                                         <DeleteComponent freshBack={freshBack} item={item}/>
-                                        <Tag className={style.point} color="#069d05">置为已完成</Tag>
+                                        <Tag onClick={() => currentToComplate(item, 2)} className={style.point} color="#069d05">置为已完成</Tag>
                                         <Typography.Text>{index+1}.</Typography.Text>
                                         {item.backlog_text}
                                     </List.Item>
@@ -108,13 +53,14 @@ const Notes = () => {
                     </Col>
                     <Col span={12}>
                         <List
+                            header={<div>已完成</div>}
                             bordered
                             style={{marginBottom: 20, overflowY: 'scroll', height: 300, minHeight: 300}}
                             dataSource={completedList}
                             renderItem={(item: BacklogList,index: number) => (
                                 <List.Item key={item.id}>
                                     <DeleteComponent freshBack={freshBack} item={item}/>
-                                    <Tag color="#007e1e">已完成</Tag>
+                                    <Tag onClick={() => currentToComplate(item, 1)} className={style.point} color="#007e1e" >置为待办</Tag>
                                     <Typography.Text>{index+1}.</Typography.Text>
                                     {item.backlog_text}
                                 </List.Item>
@@ -125,5 +71,19 @@ const Notes = () => {
             </Card>
         </Col>
     </Row>
+    function currentToComplate (item: BacklogList, type: number) {
+        const obj = {
+            id: item?.id,
+            backlog_type: type,
+            backlog_status: item.backlog_status,
+        }
+        changeBackStatus(obj).then((res: ResponseDetailParam) => {
+            const { code } = res
+            if (code === '200') {
+                freshBack()
+            }
+        })
+    }
 }
+
 export default Notes
