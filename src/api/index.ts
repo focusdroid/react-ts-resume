@@ -46,3 +46,6 @@ export function updateResumeInfo(params:Object){ // 添加简历
 export function addBacklog(params:Object){ // 新增待办
     return request.HttpRequest(`${baseUrl}/backlog/addBacklog`, 'post', params)
 }
+export function changeBackStatus (params:Object) { // 修改待办状态
+    return request.HttpRequest(`${baseUrl}/backlog/changeBackStatus`, 'POST', params)
+}
