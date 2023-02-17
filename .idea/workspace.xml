@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/leftMenu/LeftMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftMenu/LeftMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/uploadTest/UploadTest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/uploadTest/UploadTest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/test/Test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/test/Test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,48 +107,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="93" y="93" width="1288" height="678" key="DiffContextDialog" timestamp="1670322181192">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="93" y="93" width="1288" height="678" key="DiffContextDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670322181192" />
-    <state x="239" y="77" key="SettingsEditor" timestamp="1675241680553">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="239" y="77" key="SettingsEditor/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675241680553" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1675495949644">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675495949644" />
-    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1670322181192">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="93" y="93" width="1288" height="678" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1670322181192" />
-    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1675860741381">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="93" y="93" width="1288" height="678" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675860741381" />
-    <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1671346616946">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="268" y="9" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671346616946" />
-    <state x="134" y="79" width="1340" height="785" key="find.popup" timestamp="1676439290422">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="134" y="79" width="1340" height="785" key="find.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1676439290422" />
-    <state x="457" y="203" key="refactoring.ChangeSignatureDialog" timestamp="1675930883677">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="457" y="203" key="refactoring.ChangeSignatureDialog/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675930883677" />
-    <state x="394" y="197" key="run.anything.popup" timestamp="1671438536197">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="394" y="197" key="run.anything.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1671438536197" />
-    <state x="478" y="188" width="672" height="543" key="search.everywhere.popup" timestamp="1675498071643">
-      <screen x="0" y="0" width="1474" height="864" />
-    </state>
-    <state x="-1297" y="244" width="672" height="678" key="search.everywhere.popup/0.0.1474.864/-1920.9.1920.1080@-1920.9.1920.1080" timestamp="1671345514681" />
-    <state x="478" y="188" width="672" height="543" key="search.everywhere.popup/0.0.1474.864/-1920.9.1920.1080@0.0.1474.864" timestamp="1675498071643" />
   </component>
 </project>
