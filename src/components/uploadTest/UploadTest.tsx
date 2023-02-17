@@ -10,7 +10,6 @@ const props: UploadProps = {
     action: '/upload/upload',
     method: "POST",
     onChange(info) {
-        console.log(info)
         if (info.file.status !== 'uploading') {
             console.log(info.file, info.fileList);
         }
@@ -62,7 +61,6 @@ const UploadTest: FC = () => {
     function uploadFile () {
         // let inputs = document.querySelector('input[type="file"]')
         let inputs = refs.current.files[0]
-        console.log(inputs)
 
         let data = new FormData()
         data.append('file', inputs)

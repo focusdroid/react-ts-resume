@@ -16,13 +16,11 @@ const AddResume = () => {
     let [resumeUrl, setResumeUrl] = useState<string | undefined>('')
     const [form] = Form.useForm();
     const location = useLocation()
-    console.log(location, location.state)
     // 编辑获取详情页面start
     useEffect(() =>{
         const { state } = location
         if (state) {
             detail({id: state.id}).then((res: ResponseDetailParam) => {
-                console.log(res)
                 const {code, data} = res
                 if (code === '200') {
                     const { resume_url } = data as ResumeObj
@@ -36,13 +34,11 @@ const AddResume = () => {
     // 编辑获取详情页面end
 
     const onFinish = (values: any) => {
-        console.log('Success:', values);
         if (!resumeUrl) {
             message.warning("请上传简历或确定简历上传成功!")
             return
         }
-        if (location.state.id) { // updateResumeInfo
-            console.log(location.state.id)
+        if (location?.state?.id) { // updateResumeInfo
             updateResumeInfo(Object.assign(values, {id: location.state.id.toString(), resumeUrl: resumeUrl})).then((res: ResponseParam) => {
                 const {code} = res
                 if (code === '200') {
@@ -53,7 +49,6 @@ const AddResume = () => {
             })
         } else {
             addResume(Object.assign(values, {resumeUrl: resumeUrl})).then((res: ResponseParam) => {
-                console.log(res)
                 const {code} = res
                 if (code === '200') {
                     message.success(res.message)

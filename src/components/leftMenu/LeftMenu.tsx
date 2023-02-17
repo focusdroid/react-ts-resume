@@ -47,7 +47,6 @@ const LeftMenu:FC = () => {
 
     const onOpenChange: MenuProps['onOpenChange'] = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
-        console.log(keys)
         if (rootSubmenuKeys.indexOf(latestOpenKey!) === -1) {
             setOpenKeys(keys);
         } else {

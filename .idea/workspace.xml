@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cee18d5-0881-4017-a445-1adafdc75333" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/backlog/BackTitle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/backlog/DeleteComponent.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/backlog/Notes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/fetch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/leftMenu/LeftMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/leftMenu/LeftMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/uploadTest/UploadTest.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/uploadTest/UploadTest.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupProxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/addResume/AddResume.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/test/Test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/test/Test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +49,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
-    <property name="ts.external.directory.path" value="D:\work\React\react-ts-resume\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\work\react\react-ts-resume\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -74,7 +78,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
