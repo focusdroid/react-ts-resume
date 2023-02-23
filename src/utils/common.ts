@@ -8,6 +8,5 @@ export function parseUrlParams(url:string, params: any){
             url += '&' + paramsArr.join('&')
         }
     }
-    console.log(url)
     return url
 }

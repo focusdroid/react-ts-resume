@@ -42,7 +42,6 @@ class Request {
                 return res.json()
             }
         }).then(res => {
-            console.log("res",res)
             if (res.code === "2001") { // token失效跳转登录
                 console.log("token可能失效了")
                 message.warning("token可能失效了")
@@ -79,7 +78,6 @@ class Request {
             body: JSON.stringify(params)
         }).then((res:any) => {
             const { status, ok } = res
-            console.log(res)
             /*if (res.data.data.code === '2001') {
                 message.error("登录失效，请重新登陆")
                 window.location.href = "/login"

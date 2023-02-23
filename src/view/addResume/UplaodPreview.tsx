@@ -93,7 +93,7 @@ const UplaodPreview = (props: IProps, _:any) => {
         </Card>
     </div>
     function onDocumentLoadSuccess({ numPages }:{numPages: any}) { // 获取pdf页面总数
-        console.log(`获取第${numPages}页`)
+        // console.log(`获取第${numPages}页`)
         setNumPages(numPages);
     }
     function changeScale(field: string){
