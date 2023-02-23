@@ -1,3 +1,9 @@
+### 项目简述
+这是一个简历管理系统后端使用golang \
+有兴趣可以看看这个项目和GO项目[react项目](https://github.com/focusdroid/react-ts-resume) \ [Golang项目链接](https://github.com/focusdroid/ResumeManagement)
+项目使用前后端分离，前端使用react + ts，后端使用golang开发，其中后端功能如下 \ 
+添加简历，标记重点简历，每日待办（添加、编辑），简历编辑，提交简历信息，在线预览简历，删除简历，接口查询，逻辑删除，接口返回
+
 # Getting Started with Create React App
 这是一个简历管理系统后端使用golang，暂时还没有时间写md,有兴趣可以看看这个项目和GO项目[react项目](https://github.com/focusdroid/react-ts-resume) [Golang项目链接](https://github.com/focusdroid/ResumeManagement)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
