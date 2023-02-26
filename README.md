@@ -8,6 +8,14 @@
 这是一个简历管理系统后端使用golang，暂时还没有时间写md,有兴趣可以看看这个项目和GO项目[react项目](https://github.com/focusdroid/react-ts-resume) [Golang项目链接](https://github.com/focusdroid/ResumeManagement)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `版本分支说明`
+```text
+master 主分支
+dev 测试分支
+featrue20230225 添加个人信息显示功能，添加个人详情页，
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:

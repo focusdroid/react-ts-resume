@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {memo, useState} from "react";
 import { Card, Col, Row, List, Typography, Tag} from "antd";
 import BackTitle from './BackTitle'
 import DeleteComponent from './DeleteComponent'
@@ -86,4 +86,4 @@ const Notes = () => {
     }
 }
 
-export default Notes
+export default memo(Notes)

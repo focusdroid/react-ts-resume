@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import style from "./backlog.module.css";
 import {Button, Input} from "antd";
 import {addBacklog} from "../../api";
@@ -29,4 +29,13 @@ const BackTitle = (props: NoteIprops, _:any) => {
     }
 }
 
-export default BackTitle
+function areEqual (prevProps:any, nextProps:any) {
+    console.log(prevProps, nextProps)
+    return prevProps === nextProps
+    /*if (prevProps.freshBack.name === nextProps.freshBack.name) {
+        return false
+    }
+    return true*/
+}
+
+export default memo(BackTitle, areEqual)
