@@ -29,13 +29,15 @@ const BackTitle = (props: NoteIprops, _:any) => {
     }
 }
 
-function areEqual (prevProps:any, nextProps:any) {
+/*function areEqual (prevProps:any, nextProps:any) {
     console.log(prevProps, nextProps)
-    return prevProps === nextProps
-    /*if (prevProps.freshBack.name === nextProps.freshBack.name) {
+    // return prevProps === nextProps
+    return false
+    /!*if (prevProps.freshBack.name === nextProps.freshBack.name) {
         return false
     }
-    return true*/
-}
+    return true*!/
+}*/
 
-export default memo(BackTitle, areEqual)
+// export default memo(BackTitle, areEqual)
+export default BackTitle
