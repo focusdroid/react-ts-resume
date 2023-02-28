@@ -29,12 +29,14 @@ function getItem(
 const items: MenuItem[] = [
     getItem('首页/待办', '/', '/', <MailOutlined />),
     getItem('简历管理', '/resumeManagement', '/resumeManagement', <MailOutlined />),
-    getItem('上传测试', '/uploadTest', '/uploadTest', <MailOutlined />),
-    getItem('路由管理', 'sub2', '', <AppstoreOutlined />, [
-        getItem('Option 5', '5', ''),
-        getItem('Option 6', '6', ''),
-        getItem('Submenu', 'sub3', '', null, [getItem('Option 7', '7', ''), getItem('Option 8', '8', '')]),
+    getItem('管理员', 'sub2', '', <AppstoreOutlined />, [
+        getItem('管理员工(admin)', '5', ''),
+        getItem('查看操作记录', '6', ''),
+        getItem('获取已删除信息', 'sub3', '', null,
+            [getItem('已删除员工', '7', ''),
+                    getItem('已删除简历', '8', '')]),
     ]),
+    getItem('上传测试', '/uploadTest', '/uploadTest', <MailOutlined />),
 ];
 
 // submenu keys of first level

@@ -1,5 +1,22 @@
 .headerbox {
   width: 100%;
   height: 56px;
-  background: #ccc;
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+}
+.item1 {
+  flex: 1
+}
+.item2 {
+  flex: 8
+}
+.item3 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user {
+ font-size: 24px;
 }

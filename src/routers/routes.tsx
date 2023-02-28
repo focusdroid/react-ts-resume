@@ -1,4 +1,4 @@
-import {createBrowserRouter, createHashRouter, useRoutes} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import React, {lazy} from "react";
 
 export const App = lazy(() => import("../App"))
@@ -11,6 +11,7 @@ export const Backlog = lazy(() => import("../view/backlog/Backlog"))
 export const ResumeManagement = lazy(() => import("../view/resumeManagement/ResumeManagement"))
 export const UploadTest = lazy(() => import("../components/uploadTest/UploadTest"))
 export const AddResume = lazy(() => import("../view/addResume/AddResume"))
+export const User = lazy(() => import("../view/user/User"))
 /*import App from "../App"
 import Main from "../view/main/Main"
 import Login from "../view/login/Login"
@@ -18,15 +19,6 @@ import Register from "../view/register/Register"
 import Hello from "../components/hello/Hello"
 import Backlog from "../view/backlog/Backlog"
 import ResumeManagement from "../view/resumeManagement/ResumeManagement"*/
-
-/*interface Router {
-    id?: number,
-    path: string,
-    component: any,
-    index?: boolean,
-    children?: Array<Router>
-}[]*/
-
 
 function Other(){
     return <div>"没有这个页面"</div>
@@ -44,6 +36,7 @@ let userAuth = [
                     {  id: 144, path: '/uploadTest', auth: "other", element: <UploadTest/>},
                     {  id: 145, path: '/addResume', auth: "other", element: <AddResume/>},
                     {  id: 146, path: '/editResume', auth: "other", element: <AddResume/>},
+                    {  id: 147, path: '/userinfo', auth: "other", element: <User/>},
                 ]},
             { id: 15, path: '*', element: <Other/>},
         ]}
