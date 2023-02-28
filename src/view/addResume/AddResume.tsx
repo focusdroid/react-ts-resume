@@ -1,16 +1,43 @@
-import { useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import GoBack from '../../components/goBack/GoBack'
-import {Card, Row, Col, Form, Input, Button, DatePicker, Select, Upload, UploadProps, message} from "antd";
+import {
+    Card,
+    Row,
+    Col,
+    Form,
+    Input,
+    Button,
+    DatePicker,
+    Select,
+    Upload,
+    UploadProps,
+    message,
+    FormInstance
+} from "antd";
 import style from './addresume.module.css'
 import {addResume, detail, updateResumeInfo} from "../../api";
 import {ResponseDetailParam, ResponseParam, ResumeObj} from "../../utils/type";
 import UplaodPreview from "./UplaodPreview";
 import { useLocation } from 'react-router-dom'
-const UserInfo = () =>{
+import DetailDrawer from "../../plugins/DetailDrawer/DetailDrawer";
+
+interface UserInfoIprops {
+    formRef: any
+}
+
+const UserInfo = (props: UserInfoIprops) =>{
+    const [userInfo, setUserInfo] = useState<ResumeObj>()
+    const [open, setOpen] = useState<boolean>(false)
     return <div style={{display: 'flex', justifyContent: "space-between"}}>
         <div>个人信息</div>
-        <div><Button>预览简历</Button></div>
+        <div><Button onClick={userInfoPriview}>预览简历</Button></div>
+        <DetailDrawer resumeDetail={userInfo} open={open} closePriviewNotes={() => setOpen(false)}/>
     </div>
+    function userInfoPriview (){
+        const obj = props?.formRef.current?.getFieldsValue()
+        setUserInfo(obj)
+        setOpen(true)
+    }
 }
 const AddResume = () => {
     let [resumeUrl, setResumeUrl] = useState<string | undefined>('')
@@ -64,15 +91,17 @@ const AddResume = () => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
+    const formRef = useRef<FormInstance>(null);
     return <div style={{width: "100%"}}>
         <GoBack/>
         <div style={{padding: 10, display: 'flex'}}>
             {/*左侧视图start*/}
             <div className={style.card}>
-                <Card title={<UserInfo/>}>
+                <Card title={<UserInfo formRef={formRef}/>}>
                     <Form
                         form={form}
                         name="basic"
+                        ref={formRef}
                         labelCol={{ span: 6 }}
                         wrapperCol={{ span: 18 }}
                         onFinish={onFinish}

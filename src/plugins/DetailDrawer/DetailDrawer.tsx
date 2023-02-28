@@ -4,18 +4,18 @@ import styles from '../../view/resumeManagement/resume.module.css'
 import {levelField} from "../../utils/types";
 
 interface IProps {
-    ref: any,
-    resumeDetail: any
+    open?: boolean,
+    resumeDetail?: any,
+    closePriviewNotes: () => void
 }
 
-const DetailDrawer = (props:IProps, ref:any) => {
-    const [open, setOpen] = useState<boolean>(false);
-    const { resumeDetail } = props
+const DetailDrawer = (props:IProps) => {
+    const { resumeDetail, open } = props
     return <Drawer
         title={`${resumeDetail?.name} 简历详情  / 当前年月日: ${new Date().toLocaleDateString().replaceAll("/", "-")}`}
         placement="right"
-        width={800}
-        onClose={onClose}
+        width={1200}
+        onClose={() => props?.closePriviewNotes()}
         open={open}>
         <Card>
             <Row gutter={[16, 16]}>
@@ -25,7 +25,7 @@ const DetailDrawer = (props:IProps, ref:any) => {
                     className={styles.fontStyle}>级别: {getLevelField(resumeDetail?.level, resumeDetail?.jobbed)}</span></Col>
                 <Col span={8}><span className={styles.fontStyle}>邮箱: {resumeDetail?.email}</span></Col>
                 <Col span={8}><span className={styles.fontStyle}>电话: {resumeDetail?.phone}</span></Col>
-                <Col span={8}><span className={styles.fontStyle}>工作年限: {resumeDetail?.jobbed_year}年</span></Col>
+                <Col span={8}><span className={styles.fontStyle}>工作年限: {resumeDetail?.jobbed_year}{resumeDetail?.jobbed_year ? <span>年</span> : null}</span></Col>
                 <Col span={8}><span className={styles.fontStyle}>是否重点关注: {resumeDetail?.follow ?
                     <Tag style={{marginLeft: 10}} color="#87d068">
                         重点关注
@@ -45,15 +45,9 @@ const DetailDrawer = (props:IProps, ref:any) => {
         </Card>
         <Button style={{marginTop: 10}} type="primary">在线查看简历</Button>
     </Drawer>;
-    function onClose () {
-        setOpen(false);
-    }
-    const OnOpenDrawer = () => {
-        setOpen(true);
-    }
     function getLevelField(level: string | undefined, jobbed: string | undefined) {
-        return `${levelField.get(level as string)} ${jobbed}`
+        return level && jobbed ? `${levelField.get(level as string)} ${jobbed}` : null
     }
 }
 
-export default forwardRef(DetailDrawer)
+export default DetailDrawer

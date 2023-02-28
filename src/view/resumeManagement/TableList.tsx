@@ -1,10 +1,10 @@
 import React, {FC, memo, ReactHTMLElement, useRef, useState} from "react";
 import { useNavigate } from "react-router-dom"
-import {Button, message, Popconfirm, Table, Tag} from 'antd'
+import {Button, Card, Col, Drawer, message, Popconfirm, Row, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
 import { levelField } from '../../utils/types'
 import {deleteResume, detail, modifyMain} from "../../api";
-import DetailDrawer from "../../plugins/DetailDrawer/DetailDrawer";
+import styles from "./resume.module.css";
 interface IProps {
     list?: any,
     freshSource?: (values: searchField) => searchField | null | undefined | void
@@ -13,7 +13,7 @@ interface IProps {
 const TableList:FC<IProps> = (props) =>{
     const [resumeDetail, setResumeDetail] = useState<ResumeObj>()
     const navigator = useNavigate()
-    const drawerState = useRef(null);
+    const [open, setOpen] = useState<boolean>(false);
     const columns = [
         {
             title: '姓名',
@@ -22,9 +22,43 @@ const TableList:FC<IProps> = (props) =>{
             fixed: 'left' as 'left',
             width: 180,
             render: (text:any, record:ResumeObj, _:any) => <div>
-                <span style={{color: "skyblue", cursor: "pointer"}} onClick={() => getCurrentDetail(record)}>{text}</span>
+                <span style={{color: "blue", cursor: "pointer"}} onClick={() => getCurrentDetail(record)}>{text}</span>
                 {record.follow ? <Tag style={{marginLeft: 10}} color="#87d068">重点关注 </Tag> : ""}
-                <DetailDrawer ref={drawerState} resumeDetail={resumeDetail} />
+                <Drawer
+                    title={`${resumeDetail?.name} 简历详情  / 当前年月日: ${new Date().toLocaleDateString().replaceAll("/", "-")}`}
+                    placement="right"
+                    width={800}
+                    onClose={() => setOpen(false)}
+                    keyboard
+                    open={open}>
+                    <Card>
+                        <Row gutter={[16, 16]}>
+                            <Col span={8}><span className={styles.fontStyle}>姓名: {resumeDetail?.name}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>性别: {resumeDetail?.gender}</span></Col>
+                            <Col span={8}><span
+                                className={styles.fontStyle}>级别: {getLevelField(resumeDetail?.level, resumeDetail?.jobbed)}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>邮箱: {resumeDetail?.email}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>电话: {resumeDetail?.phone}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>工作年限: {resumeDetail?.jobbed_year}年</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>是否重点关注: {resumeDetail?.follow ?
+                                <Tag style={{marginLeft: 10}} color="#87d068">
+                                    重点关注
+                                </Tag> : ""}</span></Col>
+                        </Row>
+                    </Card>
+                    <Card style={{marginTop: 10}}>
+                        <Row gutter={[16, 16]}>
+                            <Col span={8}><span className={styles.fontStyle}>目标公司: {resumeDetail?.target_company}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>入职负责人: {resumeDetail?.person_charge}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>几号入职: {resumeDetail?.time_induction}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>岗位工资: {resumeDetail?.post_salary}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>入职意向: {resumeDetail?.employment_intention}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>首次联系时间: {resumeDetail?.first_contact_time}</span></Col>
+                            <Col span={8}><span className={styles.fontStyle}>备注信息: {resumeDetail?.remarks}</span></Col>
+                        </Row>
+                    </Card>
+                    <Button style={{marginTop: 10}} type="primary">在线查看简历</Button>
+                </Drawer>
             </div>
         },
         {
@@ -162,8 +196,8 @@ const TableList:FC<IProps> = (props) =>{
             console.log(res)
             if (res.code === "200") {
                 setResumeDetail(res.data as ResumeObj)
-                console.log(drawerState)
                 console.log("----", resumeDetail)
+                setOpen(true)
             }
         })
     }
