@@ -9,10 +9,13 @@
   flex: 1
 }
 .item2 {
-  flex: 8
+  flex: 8;
+  font-size: 20px;
 }
 .item3 {
   flex: 1;
+}
+.item {
   display: flex;
   align-items: center;
   justify-content: center;

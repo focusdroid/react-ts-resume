@@ -12,8 +12,8 @@ const Header: FC = () =>{
     const naviation = useNavigate()
     return <div>
         <div className={header.headerbox}>
-            <div className={`${header.item1} ${header.item}`}>left</div>
-            <div className={`${header.item2} ${header.item}`}>center</div>
+            <div className={`${header.item1} ${header.item}`}>logo</div>
+            <div className={`${header.item2} ${header.item}`}>上海HY信息科技有限公司</div>
             <div className={`${header.item3} ${header.item}`}>
                 <Space wrap>
                     <Popover content={
