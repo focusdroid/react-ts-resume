@@ -1,0 +1,18 @@
+.disflex {
+    display: flex;
+}
+.aligncenter {
+    align-items: center;
+}
+.userbox {
+    width: 700px;
+    min-width: 400px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.inputwidth {
+    width: 300px;
+}
