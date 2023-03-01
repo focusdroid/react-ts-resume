@@ -52,7 +52,8 @@ const Login = () => {
         const fetcher = (url: RequestInfo | URL) => fetch(url).then(r => r.json())
         let data = useSWR(`${baseUrl}/login`, (url) => fetcher(url))
         console.log(data)*/
-        LoginReuqest(values = {email: "focusdroid_go@163.com", password: "000000"}).then((res:any) => {
+        const value = values.email ? values : {email: "focusdroid_go@163.com", password: "000000"}
+        LoginReuqest(value).then((res:any) => {
             const { code, message, token } = res
             if (code === "200") {
                 window.localStorage.token = token
