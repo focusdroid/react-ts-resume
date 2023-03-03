@@ -112,8 +112,11 @@ const Register: FC = () => {
         sendEmailCode()
     }
     function sendEmailCode() {
-        SendEmail({mail: email}).then(res => {
+        SendEmail({email}).then(res => {
             console.log(res)
+            if (res.code === "200") {
+                message.warning("验证码已发送")
+            }
         })
     }
     function goLogin () {

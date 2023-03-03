@@ -12,7 +12,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```text
 master 主分支
 dev 测试分支
+<<<<<<< Updated upstream
 featrue20230225 添加个人信息显示功能，添加个人详情页，
+=======
+[开发中]featrue20230225 添加个人信息显示功能，添加个人详情页
+[3月排期]featrue20230325 添加系统管理员、管理员、员工等权限
+[4月排期]featrue20230420 添加管理员权限获取全局操作记录(每天所有员工上传简历数量、已完成)
+>>>>>>> Stashed changes
 ```
 
 
