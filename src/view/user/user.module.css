@@ -16,3 +16,9 @@
 .inputwidth {
     width: 300px;
 }
+
+.preview {
+    width: 100px;
+    border-radius: 50%;
+    height: 100px;
+}

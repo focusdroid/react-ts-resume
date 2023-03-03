@@ -1,4 +1,5 @@
-import {ChangeEvent, FC, useState} from "react";
+import {ChangeEvent, FC, useRef, useState} from "react";
+
 import {Input, Row, Col, Radio, Button} from 'antd'
 import type { RadioChangeEvent } from 'antd';
 import style from './user.module.css'
@@ -11,9 +12,15 @@ const User:FC = () => {
         console.log('radio checked', e.target.value);
         setGender(e.target.value);
     };
+    const inputref = useRef(null)
+    const imgRef = useRef(null)
+    const [imgUrl, setImgUrl] = useState<string>()
     return <div className={style.userbox}>
         <Row>
             <Col span={20}>
+                <img id="img" ref={imgRef} src={imgUrl} className={style.preview} alt=""/>
+                <input onChange={(e) => getFile(e)} ref={inputref} type="file"/>
+                <Button onClick={updateImage}>上传图像</Button>
                 <div>img</div>
             </Col>
             <Col span={20} className={`${style.disflex} ${style.aligncenter}`}>
@@ -49,6 +56,38 @@ const User:FC = () => {
             </Col>
         </Row>
     </div>
+    function getFile (e: ChangeEvent<HTMLInputElement> | any) {
+        console.log(e, e?.target?.files[0])
+        const file = e.target.files[0] // 获取文件
+        const reader = new FileReader() // 获取文件流对象
+        reader.onload = (e:any) => {
+            console.log(e.target.result)
+            setImgUrl(e.target.result)
+        }
+        reader.readAsDataURL(file)
+    }
+    function updateImage () {
+        console.log(imgUrl)
+        // var data = new FormData()
+        // data.append('file', imgUrl)
+        // let bytes = window.atob(imgUrl.split(',')[1])
+        // let arrayBuffer = new ArrayBuffer(bytes.length)
+        //
+        // let intArray = new Uint8Array(arrayBuffer)
+        //
+        // let blob = new Blob([intArray], {
+        //     type: 'application/json'
+        // })
+        //
+        // let file = new File([], data)
+        // fetch('/upload', {
+        //     method: 'POST',
+        //     headers: {
+        //         "content-type": "application/json"
+        //     },
+        //     body: data
+        // })
+    }
     function submit () {
         const obj = {
             name,
