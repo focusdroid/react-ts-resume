@@ -30,8 +30,8 @@ const items: MenuItem[] = [
     getItem('首页/待办', '/', '/', <MailOutlined />),
     getItem('简历管理', '/resumeManagement', '/resumeManagement', <MailOutlined />),
     getItem('管理员', 'sub2', '', <AppstoreOutlined />, [
-        getItem('管理员工(admin)', '5', ''),
-        getItem('查看操作记录', '6', ''),
+        getItem('管理员工(admin)', '/adminStaff', ''),
+        getItem('查看操作记录', '/operationRecord', ''),
         getItem('获取已删除信息', 'sub3', '', null,
             [getItem('已删除员工', '7', ''),
                     getItem('已删除简历', '8', '')]),

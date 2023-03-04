@@ -1,5 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import React, {lazy} from "react";
+import OperationRecord from "../view/admin/operationRecord/OperationRecord";
 
 export const App = lazy(() => import("../App"))
 export const Main = lazy(() => import("../view/main/Main"))
@@ -12,6 +13,8 @@ export const ResumeManagement = lazy(() => import("../view/resumeManagement/Resu
 export const UploadTest = lazy(() => import("../components/uploadTest/UploadTest"))
 export const AddResume = lazy(() => import("../view/addResume/AddResume"))
 export const User = lazy(() => import("../view/user/User"))
+export const AdminStaff = lazy(() => import("../view/admin/adminStaff/AdminStaff"))
+export const OperationRecords = lazy(() => import("../view/admin/operationRecord/OperationRecord"))
 /*import App from "../App"
 import Main from "../view/main/Main"
 import Login from "../view/login/Login"
@@ -37,6 +40,8 @@ let userAuth = [
                     {  id: 145, path: '/addResume', auth: "other", element: <AddResume/>},
                     {  id: 146, path: '/editResume', auth: "other", element: <AddResume/>},
                     {  id: 147, path: '/userinfo', auth: "other", element: <User/>},
+                    {  id: 148, path: '/adminStaff', auth: "other", element: <AdminStaff/>},
+                    {  id: 149, path: '/operationRecord', auth: "other", element: <OperationRecords/>},
                 ]},
             { id: 15, path: '*', element: <Other/>},
         ]}
