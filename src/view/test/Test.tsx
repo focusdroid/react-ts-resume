@@ -1,5 +1,5 @@
 import TestSon from './TestSon'
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import {GetMainResumeList} from "../../api";
 import {ResponseParam} from "../../utils/type";
 import TodoList from './TodoList'

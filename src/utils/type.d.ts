@@ -80,3 +80,28 @@ export declare interface BacklogList {
     id: number
     user_id: string
 }
+export declare interface UserInfoResponse {
+    code: string
+    data?: UserInfo,
+    message?: string
+}
+export declare interface UserInfo {
+    avatar_url: string | null
+    city: string | null
+    country: string | null
+    email: string | null
+    gender: string | null
+    id: number | null
+    is_admin: boolean | null
+    line_time: string | null
+    name: string | null
+    nick_name: string | null
+    phone: string | null
+    province: string | null
+    user_id: string | null
+    user_status: string | null
+}
+
+export declare type PartialUserInfo<T> = {
+    [P in keyof T]?: T[P];
+};

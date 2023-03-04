@@ -53,3 +53,6 @@ export function changeBackStatus (params:Object) { // 修改待办状态
 export function addUserInfo (params:Object) { // 添加(修改)用户信息
     return request.HttpRequest(`${baseUrl}/user/addUserInfo`, 'POST', params)
 }
+export function getUserInfo(params:Object = {}){ // 获取用户信息
+    return request.HttpRequest(`${baseUrl}/user/userinfo`, 'get', params)
+}
