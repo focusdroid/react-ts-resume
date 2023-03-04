@@ -1,4 +1,4 @@
-import {createBrowserRouter, createHashRouter, useRoutes} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import React, {lazy} from "react";
 
 export const App = lazy(() => import("../App"))

@@ -1,7 +1,6 @@
 import {FC, useEffect, useState} from "react";
-import {Button, Card, Checkbox, Form, Input, message} from 'antd';
+import {Button, Card, Form, Input, message} from 'antd';
 import style from '../login/login.module.css'
-import { user } from '../../utils/type'
 import {RegisterRequest, SendEmail} from '../../api'
 import { useNavigate } from "react-router-dom";
 const Register: FC = () => {
@@ -12,7 +11,7 @@ const Register: FC = () => {
     const [disabled, setDisabled] = useState<boolean>(false)
     useEffect(() => {
         setText("获取验证码")
-    }, ['123'])
+    }, [])
     return <div className={style.loginBox}>
         {contextHolder}
         <Card style={{width: 500, height: 360}}>
@@ -84,7 +83,7 @@ const Register: FC = () => {
         console.log('Failed:', errorInfo);
     };
     function countDown () { // 倒计时的计算还可以使用获取时间戳来准确
-        var myreg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+        const myreg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
         if (!myreg.test(email as string)) {
             messageApi.open({
                 type: 'warning',

@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
