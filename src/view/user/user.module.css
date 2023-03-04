@@ -7,7 +7,7 @@
 .userbox {
     width: 700px;
     min-width: 400px;
-    /*border: 1px solid #ccc;*/
+    border: 1px solid #ccc;
     margin: 0 auto;
 }
 .mt20 {
@@ -16,6 +16,7 @@
 .inputwidth {
     width: 300px;
 }
+
 .preview {
     width: 100px;
     border-radius: 50%;
