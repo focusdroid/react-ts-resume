@@ -50,3 +50,6 @@ export function addBacklog(params:Object){ // 新增待办
 export function changeBackStatus (params:Object) { // 修改待办状态
     return request.HttpRequest(`${baseUrl}/backlog/changeBackStatus`, 'POST', params)
 }
+export function addUserInfo (params:Object) { // 添加(修改)用户信息
+    return request.HttpRequest(`${baseUrl}/user/addUserInfo`, 'POST', params)
+}

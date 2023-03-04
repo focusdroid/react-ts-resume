@@ -7,7 +7,6 @@
 .userbox {
     width: 700px;
     min-width: 400px;
-    border: 1px solid #ccc;
     margin: 0 auto;
 }
 .mt20 {
@@ -21,4 +20,24 @@
     width: 100px;
     border-radius: 50%;
     height: 100px;
+}
+.imgUrl {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+.img {
+    text-align: center;
+    margin-right: 33%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.closeout {
+    /*margin-top: -30px;*/
+    /*position: relative;*/
+    /*right: 80px;*/
+    /*bottom: -64px;*/
+    position: relative;
+    top: -24px;
+    left: -5px;
 }
