@@ -5,21 +5,39 @@
   border-bottom: 1px solid #f1f1f1;
   display: flex;
 }
-.item1 {
-  flex: 1
-}
-.item2 {
-  flex: 8;
-  font-size: 20px;
-}
-.item3 {
-  flex: 1;
-}
 .item {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.item1 {
+  flex: 1
+}
+.item2 {
+  flex: 7;
+  font-size: 20px;
+}
+.item3 {
+  flex: 2;
+  justify-content: start;
+}
+
 .user {
  font-size: 24px;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.name {
+  font-size: 14px;
+  margin-left: 6px;
+}
+.namebox {
+  max-width: 300px;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

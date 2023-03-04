@@ -2,8 +2,6 @@ import React, {FC, memo, useEffect} from "react";
 import { useNavigate } from "react-router-dom"
 import { Button, Form, Input, Card, Row,Col } from 'antd';
 import {searchField} from "../../utils/type";
-import useSWR from "swr";
-import {baseUrl} from "../../api";
 interface IProps {
     getAllResumeSource: (values: searchField) => searchField | null | undefined | void | Object
     // getAllResumeSource: (url: string, params:any) => searchField | null | undefined | void | Object

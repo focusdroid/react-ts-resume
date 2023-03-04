@@ -129,7 +129,6 @@ const User:FC = () => {
     function onFinish(values: PartialUserInfo<UserInfo>) { // 修改用户信息
         const obj = Object.assign(values, { avatar_url: imgUrl })
         addUserInfo(obj).then((res:any) => {
-            console.log(res)
             if (res.code === "200") {
                 setIsEdit(false)
                 getUserInfoFn()

@@ -12,7 +12,7 @@ import {
     Upload,
     UploadProps,
     message,
-    FormInstance
+    FormInstance, Radio
 } from "antd";
 import style from './addresume.module.css'
 import {addResume, detail, updateResumeInfo} from "../../api";
@@ -123,12 +123,10 @@ const AddResume = () => {
                                     label="性别"
                                     name="gender"
                                 >
-                                    <Select
-                                        style={{ width: '100%' }}
-                                    >
-                                        <Select.Option value="M">男</Select.Option>
-                                        <Select.Option value="F">女</Select.Option>
-                                    </Select>
+                                    <Radio.Group>
+                                        <Radio value="M"> 男 </Radio>
+                                        <Radio value="F"> 女 </Radio>
+                                    </Radio.Group>
                                 </Form.Item>
                             </Col>
                             <Col span={22}>
