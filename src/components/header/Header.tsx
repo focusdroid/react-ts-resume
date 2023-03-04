@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, memo, useCallback, useMemo, useState} from "react";
 import {
     UserOutlined
 } from '@ant-design/icons';
@@ -10,18 +10,17 @@ import {UserInfo, UserInfoResponse} from "../../utils/type";
 import Request from "../../api/fetch";
 
 
-const Header: FC = () =>{
+const Header: FC = memo(() =>{
     const [user, setUserInfo] = useState<UserInfo>()
-    const fetchGetUser = (url: string) => {
+    const fetchGetUser = useCallback((url: string) => {
         Request.HttpRequest(url, 'get').then((res: UserInfoResponse) => {
-            console.log(res)
             const {code, data} = res
             if (code === "200") {
                 setUserInfo(data)
             }
         })
-    }
-    // useSWR('/api/user/userinfo', fetchGetUser)
+    }, [])
+    useSWR('/api/user/userinfo', fetchGetUser)
     const naviation = useNavigate()
     return <div>
         <div className={style.headerbox}>
@@ -54,6 +53,6 @@ const Header: FC = () =>{
         localStorage.clear()
         naviation("/login")
     }
-}
+})
 
 export default Header

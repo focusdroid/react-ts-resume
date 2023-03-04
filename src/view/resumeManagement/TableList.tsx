@@ -5,6 +5,7 @@ import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
 import { levelField } from '../../utils/types'
 import {deleteResume, detail, modifyMain} from "../../api";
 import styles from "./resume.module.css";
+const dayjs = require('dayjs')
 interface IProps {
     list?: any,
     freshSource?: (values: searchField) => searchField | null | undefined | void
@@ -99,6 +100,9 @@ const TableList:FC<IProps> = (props) =>{
             title: '首次联系时间',
             dataIndex: 'first_contact_time',
             key: 'first_contact_time',
+            render: (_: any, record: ResumeObj) => {
+                return <span>{record?.first_contact_time ? dayjs(record?.first_contact_time).format("YYYY-MM-DD HH:ss:mm") : null}</span>
+            }
         },
         {
             title: '入职意向',
@@ -124,6 +128,9 @@ const TableList:FC<IProps> = (props) =>{
             title: '入职时间',
             dataIndex: 'time_induction',
             key: 'time_induction',
+            render: (_: any, record: ResumeObj) => {
+                return <span>{record.time_induction ? dayjs(record.time_induction).format("YYYY-MM-DD HH:ss:mm") : null}</span>
+            }
         },
         {
             title: '操作',
@@ -150,7 +157,16 @@ const TableList:FC<IProps> = (props) =>{
         },
     ];
     function getLevelField(level: string | undefined, jobbed: string | undefined) {
-        return `${levelField.get(level as string)} ${jobbed}`
+        if (level && jobbed) {
+            return `${level} ${jobbed}`
+            // return `${levelField.get(level as string)} ${jobbed}`
+        }
+        if (jobbed) {
+            return <span>{jobbed}</span>
+        }
+        if (level) {
+            return <span>{level}</span>
+        }
     }
     const {list} = props
     return <Table

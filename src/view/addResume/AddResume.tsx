@@ -8,9 +8,6 @@ import {
     Input,
     Button,
     DatePicker,
-    Select,
-    Upload,
-    UploadProps,
     message,
     FormInstance, Radio
 } from "antd";
@@ -20,7 +17,7 @@ import {ResponseDetailParam, ResponseParam, ResumeObj} from "../../utils/type";
 import UplaodPreview from "./UplaodPreview";
 import { useLocation } from 'react-router-dom'
 import DetailDrawer from "../../plugins/DetailDrawer/DetailDrawer";
-
+import moment from 'moment'
 interface UserInfoIprops {
     formRef: any
 }
@@ -51,6 +48,9 @@ const AddResume = () => {
                 const {code, data} = res
                 if (code === '200') {
                     const { resume_url } = data as ResumeObj
+                    data.time_induction = moment(data.time_induction)
+                    data.first_contact_time = moment(data.first_contact_time)
+                    console.log(data)
                     form.setFieldsValue(data)
                     setResumeUrl(resume_url)
                 }
@@ -92,6 +92,21 @@ const AddResume = () => {
         console.log('Failed:', errorInfo);
     };
     const formRef = useRef<FormInstance>(null);
+    const checkPhone = (_: any, value: string) => {
+        const rex = /^1[345789]{1}\d{9}/
+        if (rex.test(value)) {
+            return Promise.resolve();
+        }
+        return Promise.reject(new Error('请输入正确格式的手机号'));
+    }
+    const checkEmail = (_: any, value: string) => {
+        const rex = /^[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*\.[a-z]{2,}$/
+        console.log(value, rex.test(value))
+        if (rex.test(value)) {
+            return Promise.resolve();
+        }
+        return Promise.reject(new Error('请输入正确格式的邮箱'));
+    };
     return <div style={{width: "100%"}}>
         <GoBack/>
         <div style={{padding: 10, display: 'flex'}}>
@@ -113,7 +128,7 @@ const AddResume = () => {
                                 <Form.Item
                                     label="姓名"
                                     name="name"
-                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                    rules={[{ required: true, message: '请输入姓名' }]}
                                 >
                                     <Input />
                                 </Form.Item>
@@ -133,7 +148,7 @@ const AddResume = () => {
                                 <Form.Item
                                     label="手机号"
                                     name="phone"
-                                    rules={[{ required: true, message: '请输入手机号！' }]}
+                                    rules={[{ validator: checkPhone }]}
                                 >
                                     <Input />
                                 </Form.Item>
@@ -142,7 +157,7 @@ const AddResume = () => {
                                 <Form.Item
                                     label="邮箱"
                                     name="email"
-                                    rules={[{ required: true, message: '请输入邮箱!' }]}
+                                    rules={[{ validator: checkEmail }]}
                                 >
                                     <Input />
                                 </Form.Item>
@@ -150,7 +165,7 @@ const AddResume = () => {
                             <Col span={22}>
                                 <Form.Item
                                     label="入职意向"
-                                    name="username"
+                                    name="employment_intention"
                                 >
                                     <Input />
                                 </Form.Item>
@@ -158,7 +173,7 @@ const AddResume = () => {
                             <Col span={22}>
                                 <Form.Item
                                     label="是否确认入职"
-                                    name="confirmEnrollment"
+                                    name="confirm_enrollment"
                                 >
                                     <Input />
                                 </Form.Item>
@@ -182,7 +197,7 @@ const AddResume = () => {
                             <Col span={22}>
                                 <Form.Item
                                     label="目标公司"
-                                    name="targetCompany"
+                                    name="target_company"
                                 >
                                     <Input />
                                 </Form.Item>
@@ -190,7 +205,7 @@ const AddResume = () => {
                             <Col span={22}>
                                 <Form.Item
                                     label="薪资"
-                                    name="postSalary"
+                                    name="post_salary"
                                 >
                                     <Input />
                                 </Form.Item>
@@ -198,23 +213,24 @@ const AddResume = () => {
                             <Col span={22}>
                                 <Form.Item
                                     label="入职时间"
-                                    name="timeInduction"
+                                    name="time_induction"
                                 >
-                                    <DatePicker placeholder="请选择入职时间" style={{width: "100%"}} />
+                                    <DatePicker
+                                        format="YYYY-MM-DD HH:ss:mm" placeholder="请选择入职时间" style={{width: "100%"}} />
                                 </Form.Item>
                             </Col>
-                            <Col span={22}>
+{                            <Col span={22}>
                                 <Form.Item
                                     label="首次联系时间"
-                                    name="firstContactTime"
+                                    name="first_contact_time"
                                 >
-                                    <DatePicker placeholder="请选择首次联系时间" style={{width: "100%"}} />
+                                    <DatePicker format="YYYY-MM-DD HH:ss:mm" placeholder="请选择首次联系时间" style={{width: "100%"}} />
                                 </Form.Item>
-                            </Col>
+                            </Col>}
                             <Col span={22}>
                                 <Form.Item
                                     label="入职负责人"
-                                    name="personCharge"
+                                    name="person_charge"
                                 >
                                     <Input />
                                 </Form.Item>
@@ -233,7 +249,10 @@ const AddResume = () => {
                                         重置
                                     </Button>
                                     <Button style={{marginLeft: 10}} type="primary" htmlType="submit">
-                                        提交
+                                        提交并添加下一条
+                                    </Button>
+                                    <Button style={{marginLeft: 10}} type="primary" htmlType="submit">
+                                        提交返回列表
                                     </Button>
                                 </Form.Item>
                             </Col>
