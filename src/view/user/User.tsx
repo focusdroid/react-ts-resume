@@ -89,8 +89,8 @@ const User:FC = () => {
                 </Radio.Group>
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
+            <Form.Item wrapperCol={{ span: 18 }}>
+                <Button size="large" block type="primary" htmlType="submit">
                     提交
                 </Button>
             </Form.Item>
