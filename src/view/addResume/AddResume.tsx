@@ -15,9 +15,10 @@ import style from './addresume.module.css'
 import {addResume, detail, updateResumeInfo} from "../../api";
 import {ResponseDetailParam, ResponseParam, ResumeObj} from "../../utils/type";
 import UplaodPreview from "./UplaodPreview";
-import { useLocation } from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import DetailDrawer from "../../plugins/DetailDrawer/DetailDrawer";
 import moment from 'moment'
+import {LeftOutlined} from "@ant-design/icons";
 interface UserInfoIprops {
     formRef: any
 }
@@ -40,6 +41,7 @@ const AddResume = () => {
     let [resumeUrl, setResumeUrl] = useState<string | undefined>('')
     const [form] = Form.useForm();
     const location = useLocation()
+    const naviagte = useNavigate()
     // 编辑获取详情页面start
     useEffect(() =>{
         const { state } = location
@@ -245,14 +247,12 @@ const AddResume = () => {
                             </Col>
                             <Col span={22}>
                                 <Form.Item wrapperCol={{ offset: 6, span: 20 }}>
-                                    <Button onClick={() => form.resetFields()}>
+                                    <Button onClick={() => naviagte(-1)} icon={<LeftOutlined />}>返回</Button>
+                                    <Button style={{marginLeft: 10}} onClick={() => form.resetFields()}>
                                         重置
                                     </Button>
                                     <Button style={{marginLeft: 10}} type="primary" htmlType="submit">
-                                        提交并添加下一条
-                                    </Button>
-                                    <Button style={{marginLeft: 10}} type="primary" htmlType="submit">
-                                        提交返回列表
+                                        提交
                                     </Button>
                                 </Form.Item>
                             </Col>

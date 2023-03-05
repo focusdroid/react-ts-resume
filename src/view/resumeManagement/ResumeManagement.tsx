@@ -1,4 +1,4 @@
-import React, {FC, memo, useCallback, useState} from "react";
+import React, {memo, useState} from "react";
 import Search from "./Search"
 import TableList from './TableList'
 import {baseUrl, GetAllResumeList, SpaceGETRequest,} from "../../api";
