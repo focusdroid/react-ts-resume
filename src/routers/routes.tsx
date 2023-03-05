@@ -1,6 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
 import React, {lazy} from "react";
-import OperationRecord from "../view/admin/operationRecord/OperationRecord";
 
 export const App = lazy(() => import("../App"))
 export const Main = lazy(() => import("../view/main/Main"))

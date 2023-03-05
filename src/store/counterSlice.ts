@@ -6,7 +6,7 @@ interface CounterSlice {
 }
 
 const initialState:CounterSlice = {
-    values: 0
+    values: 11
 }
 
 export const counter = createSlice({
@@ -27,5 +27,5 @@ export const counter = createSlice({
 
 export const { increment, incrementByAmount, decrement } = counter.actions
 
-export const selectCount = (state:RootState) => state.counter.values
-export default counter.reducer
+export const selectCount = (state:RootState) => state.counter
+export default counter

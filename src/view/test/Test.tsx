@@ -1,14 +1,20 @@
 import TestSon from './TestSon'
-import {useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {GetMainResumeList} from "../../api";
 import {ResponseParam} from "../../utils/type";
+import { connect } from 'react-redux'
 import TodoList from './TodoList'
-const Test = () => {
+const Test = (props:any) => {
     let [count, setCount] = useState<number>(0)
     let [count2, setCount2] = useState<number>(12)
+    useEffect(() => {
+        console.log(props.value.counter.values)
+    }, [])
     useMemo(() => addNumber(count, count2), [count])
     return (<div>
         <TodoList/>
+        <h2>values {props.value.counter.values}</h2>
+        <h2>name {props.value.user.user.name}</h2>
         <div>123---{count} --- result -- </div>
         <button onClick={add}>+</button>
         {/*<button onClick={addNumber}>相加计算</button>*/}
@@ -34,5 +40,11 @@ const Test = () => {
 }
 
 // const Test = () => []
+const mapStateToProps = (state: any, _:any) => ({
+    value: state
+})
 
-export default Test
+const mapDispatchToProps = {
+    // ... normally is an object full of action creators
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Test)
