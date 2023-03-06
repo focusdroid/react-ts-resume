@@ -1,4 +1,4 @@
-import {FC, memo, useCallback, useMemo, useState} from "react";
+import { useCallback, useState} from "react";
 import {
     UserOutlined
 } from '@ant-design/icons';
@@ -6,17 +6,24 @@ import style from "./header.module.css"
 import {Button, Popover, Space} from "antd";
 import {useNavigate} from "react-router-dom";
 import useSWR from "swr";
-import {UserInfo, UserInfoResponse} from "../../utils/type";
+import { UserInfo, UserInfoResponse} from "../../utils/type";
 import Request from "../../api/fetch";
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
+import {addUserInfoReducer} from "../../store/userReducer";
 
+interface IPropsHeader {
+    addUserInfoReducer: (obj: UserInfo | undefined) => void
+}
 
-const Header: FC = memo(() =>{
+const Header = (props: IPropsHeader) =>{
     const [user, setUserInfo] = useState<UserInfo>()
     const fetchGetUser = useCallback((url: string) => {
         Request.HttpRequest(url, 'get').then((res: UserInfoResponse) => {
             const {code, data} = res
             if (code === "200") {
                 setUserInfo(data)
+                props?.addUserInfoReducer(data)
             }
         })
     }, [])
@@ -53,6 +60,15 @@ const Header: FC = memo(() =>{
         localStorage.clear()
         naviation("/login")
     }
+}
+
+const mapStateToProps = (state: any, _:any) => ({
 })
 
-export default Header
+const mapDispatchToProps = (dispatch: Dispatch, data:any) => {
+    return {
+        addUserInfoReducer: (data:any) => dispatch(addUserInfoReducer(data))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header)

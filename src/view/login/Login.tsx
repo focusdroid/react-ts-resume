@@ -3,7 +3,10 @@ import style from './login.module.css'
 import { user } from '../../utils/type'
 import { LoginReuqest } from '../../api'
 import { useNavigate } from "react-router-dom";
-const Login = () => {
+import {connect} from "react-redux";
+import { Dispatch } from 'redux'
+import {addUserInfoReducer} from '../../store/userReducer'
+const Login = (props: any) => {
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
     return <div className={style.loginBox}>
@@ -54,8 +57,10 @@ const Login = () => {
         console.log(data)*/
         const value = values.email ? values : {email: "focusdroid_go@163.com", password: "000000"}
         LoginReuqest(value).then((res:any) => {
-            const { code, message, token } = res
+            const { code, message, token, data } = res
             if (code === "200") {
+                console.log("props", props)
+                props?.addUserInfoReducer(data)
                 window.localStorage.token = token
                 return code
             } else {
@@ -79,4 +84,13 @@ const Login = () => {
     }
 }
 
-export default Login
+const mapStateToProps = (state: any, _:any) => {}
+
+const mapDispatchToProps = (dispatch: Dispatch, datas:any) => {
+    console.log(dispatch, datas)
+    return {
+        addUserInfoReducer: (datas:any) => dispatch(addUserInfoReducer(datas))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

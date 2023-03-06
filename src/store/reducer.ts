@@ -1,5 +1,5 @@
 import {counter} from "./counterSlice";
-import { userReducer } from "../view/user/userReducer";
+import userReducer from "./userReducer";
 
 export default {
     counter: counter.reducer,

@@ -7,10 +7,25 @@ import TodoList from './TodoList'
 const Test = (props:any) => {
     let [count, setCount] = useState<number>(0)
     let [count2, setCount2] = useState<number>(12)
-    useEffect(() => {
+    /*useEffect(() => {
         console.log(props.value.counter.values)
-    }, [])
-    useMemo(() => addNumber(count, count2), [count])
+    }, [])*/
+    // const [count,setCount] = useState(0);
+
+    /*useEffect(() => {
+        let timer = setInterval(() => {
+            setCount(count + 1);
+        }, 500);
+        return () => clearInterval(timer);
+    }, [count]);
+
+    useEffect(() => {
+        let timer = setInterval(() => {
+            console.log(count);
+        }, 500);
+        return () => clearInterval(timer);
+    }, [count]);*/
+    // useMemo(() => addNumber(count, count2), [count])
     return (<div>
         <TodoList/>
         <h2>values {props.value.counter.values}</h2>

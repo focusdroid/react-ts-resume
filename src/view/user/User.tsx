@@ -6,7 +6,6 @@ import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import style from './user.module.css'
 import {addUserInfo, getUserInfo} from "../../api";
 import {PartialUserInfo, UserInfo, UserInfoResponse} from "../../utils/type";
-
 const User:FC = () => {
     const [user, setUser] = useState<UserInfo>()
     const [isEdit, setIsEdit]= useState<boolean>(false)
@@ -85,6 +84,9 @@ const User:FC = () => {
                 <Form.Item
                     label="手机"
                     name="phone"
+                    rules={[
+                        {pattern: new RegExp(/^1[345789]{1}\d{9}$/, 'g')}
+                    ]}
                 >
                     {isEdit ? <Input maxLength={11}/> : <span>{user?.phone}</span> }
                 </Form.Item>
@@ -143,6 +145,7 @@ const User:FC = () => {
             if (code === '200') {
                 setUser(data)
                 if (status) {
+                    console.log(data)
                     form.setFieldsValue(data)
                 }
             } else if (res.code === "-1") {
@@ -152,7 +155,6 @@ const User:FC = () => {
     }
     function onFinishFailed(errorInfo: any) {
         console.log('Failed:', errorInfo);
-    };
+    }
 }
-
 export default User

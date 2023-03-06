@@ -8,7 +8,7 @@ class Request {
         this.refleshToken()
     }
     HttpRequest (url: string, methods: string = 'GET', params: any = {}) { // 将所有请求整合移植
-        console.log(url, methods, params)
+        // console.log(url, methods, params)
         let fetchOption = {}
         if (methods.toUpperCase() === "GET") {
             url = parseUrlParams(url, params)
@@ -23,7 +23,7 @@ class Request {
             }
         )
         return fetch(url,options).then((res: any) => {
-            console.log("res--->", res)
+            // console.log("res--->", res)
             /*const total = res.headers.get('content-length')
             const decoder = new TextDecoder()
             const reader = res.body.getReader()

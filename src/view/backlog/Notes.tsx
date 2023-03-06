@@ -12,7 +12,6 @@ const Notes = () => {
     const [list, setBackList] = useState<BacklogList[]>([])
     const [completedList, setCompletedList] = useState<BacklogList[]>([])
     const fetcher = (url: string, obj:Object) => SpaceGETRequest(url, obj).then((res:ResponseDetailParam) => {
-        console.log(res)
         if (res && res?.code === "200" && res?.backlog_type === 1) {
             setBackList(res.data)
         } else if (res && res?.code === "200" && res?.backlog_type === 2) {
