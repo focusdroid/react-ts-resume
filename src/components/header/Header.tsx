@@ -32,7 +32,7 @@ const Header = (props: IPropsHeader) =>{
     return <div>
         <div className={style.headerbox}>
             <div className={`${style.item1} ${style.item}`}>logo</div>
-            <div className={`${style.item2} ${style.item}`}>上海HY信息科技有限公司</div>
+            <div className={`${style.item2} ${style.item}`}>HY信息科技有限公司</div>
             <div className={`${style.item3} ${style.item}`}>
                 <Space wrap>
                     <Popover content={

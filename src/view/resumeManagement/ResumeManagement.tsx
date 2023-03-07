@@ -5,7 +5,7 @@ import {baseUrl, GetAllResumeList, SpaceGETRequest,} from "../../api";
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
 import backlog from '../backlog/backlog.module.css'
 import useSWR  from 'swr'
-const ResumeManagement = () => {
+const ResumeManagement = memo(() => {
     const [list, setListData] = useState<ResumeObj>()
     const getResumeList = (url:string, params: Object) => SpaceGETRequest(url, params).then(res => {
         const { code, data } = res
@@ -27,6 +27,6 @@ const ResumeManagement = () => {
             }
         })
     }
-}
+})
 
-export default memo(ResumeManagement)
+export default ResumeManagement
