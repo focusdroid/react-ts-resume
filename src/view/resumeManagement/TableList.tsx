@@ -2,7 +2,6 @@ import React, {FC, memo, ReactHTMLElement, useRef, useState} from "react";
 import { useNavigate } from "react-router-dom"
 import {Button, Card, Col, Drawer, message, Popconfirm, Row, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
-import { levelField } from '../../utils/types'
 import {deleteResume, detail, modifyMain} from "../../api";
 import styles from "./resume.module.css";
 const dayjs = require('dayjs')

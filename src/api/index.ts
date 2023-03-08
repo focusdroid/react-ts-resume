@@ -56,3 +56,6 @@ export function addUserInfo (params:Object) { // 添加(修改)用户信息
 export function getUserInfo(params:Object = {}){ // 获取用户信息
     return request.HttpRequest(`${baseUrl}/user/userinfo`, 'get', params)
 }
+export function getUsersList(params:Object){
+    return request.HttpRequest(`${baseUrl}/user/userList`, 'get', params)
+}
