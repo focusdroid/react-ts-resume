@@ -3,12 +3,13 @@ import {Button, Card, Col, Form, Input, Row, Table, Pagination} from "antd";
 import style from './admin.module.css'
 import { searchField, UserInfo} from "../../../utils/type";
 import {getUsersList} from "../../../api";
+import {connect} from "react-redux";
 const dayjs = require('dayjs')
 interface IPropsPage {
     page: number
     pageSize: number
 }
-const AdminStaff:FC = memo(() => {
+const AdminStaff = (props: any) => {
     const [userList, setUserList] = useState<UserInfo[]>([])
     const [page, setPage] = useState<IPropsPage>({page: 1, pageSize: 10})
     const [total, setTotal] = useState<number>(0)
@@ -54,7 +55,11 @@ const AdminStaff:FC = memo(() => {
             }
         },
     ];
+    // console.log(props)
+    const {user} = props
+    console.log(user)
     return <div className={style.userbox}>
+        <div>{user.user.email}</div>
         <Card>
             <Form
                 layout="inline"
@@ -135,6 +140,12 @@ const AdminStaff:FC = memo(() => {
         setPage(page)
         searchUserList()
     };
+}
+const mapStateToProps = (state: any) => ({
+    user: state.user
 })
 
-export default AdminStaff
+const mapDispatchToProps = () => {}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AdminStaff)
+// export default AdminStaff
