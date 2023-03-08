@@ -1,13 +1,13 @@
 import React, {memo, FC, useState, useEffect} from 'react'
-import {Button, Card, Col, Form, Input, Row, Table, Pagination, PaginationProps} from "antd";
+import {Button, Card, Col, Form, Input, Row, Table, Pagination} from "antd";
 import style from './admin.module.css'
 import { searchField, UserInfo} from "../../../utils/type";
 import {getUsersList} from "../../../api";
+const dayjs = require('dayjs')
 interface IPropsPage {
     page: number
     pageSize: number
 }
-
 const AdminStaff:FC = memo(() => {
     const [userList, setUserList] = useState<UserInfo[]>([])
     const [page, setPage] = useState<IPropsPage>({page: 1, pageSize: 10})
@@ -49,6 +49,9 @@ const AdminStaff:FC = memo(() => {
             title: '用户创建时间',
             dataIndex: 'created_at',
             key: 'created_at',
+            render: (text:any, record:any, _:any) => {
+                return <span>{dayjs(record?.created_at).format("YYYY-MM-DD HH:mm:ss")}</span>
+            }
         },
     ];
     return <div className={style.userbox}>

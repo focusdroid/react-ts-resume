@@ -129,7 +129,7 @@ const TableList:FC<IProps> = (props) =>{
             key: 'first_contact_time',
             width: 200,
             render: (_: any, record: ResumeObj) => {
-                return <span>{record?.first_contact_time ? dayjs(record?.first_contact_time).format("YYYY-MM-DD HH:ss:mm") : null}</span>
+                return <span>{record?.first_contact_time ? dayjs(record?.first_contact_time).format("YYYY-MM-DD HH:mm:ss") : null}</span>
             }
         },
         {
@@ -159,7 +159,7 @@ const TableList:FC<IProps> = (props) =>{
             key: 'time_induction',
             width: 200,
             render: (_: any, record: ResumeObj) => {
-                return <span>{record.time_induction ? dayjs(record.time_induction).format("YYYY-MM-DD HH:ss:mm") : null}</span>
+                return <span>{record.time_induction ? dayjs(record.time_induction).format("YYYY-MM-DD HH:mm:ss") : null}</span>
             }
         },
         {
