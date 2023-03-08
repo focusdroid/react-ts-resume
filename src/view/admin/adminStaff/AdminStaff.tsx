@@ -1,4 +1,4 @@
-import React, {memo, FC, useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import {Button, Card, Col, Form, Input, Row, Table, Pagination} from "antd";
 import style from './admin.module.css'
 import { searchField, UserInfo} from "../../../utils/type";
@@ -101,7 +101,7 @@ const AdminStaff = (props: any) => {
                 pagination={false}
                 columns={columns} />
             <Row>
-                <Col offset={16} style={{marginTop: 10}}>
+                <Col className={style.pagination}>
                     <Pagination
                         showSizeChanger
                         onChange={onShowSizeChange}
