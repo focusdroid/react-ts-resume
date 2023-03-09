@@ -24,7 +24,7 @@ const AdminStaff = (props: any) => {
             key: 'name',
             render: (text:any, record:any, _:any) => {
                 return <div>
-                    <span>{record.nick_name}</span><span>({record.name})</span>
+                    <span>{record.nick_name}</span>{record.name ? <span>({record.name})</span> : null}
                 </div>
             }
         },

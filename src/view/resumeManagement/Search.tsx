@@ -1,4 +1,4 @@
-import React, {FC, memo, useEffect} from "react";
+import React, {FC, memo} from "react";
 import { useNavigate } from "react-router-dom"
 import { Button, Form, Input, Card, Row,Col } from 'antd';
 import {searchField} from "../../utils/type";

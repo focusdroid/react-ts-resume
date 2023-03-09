@@ -1,9 +1,8 @@
-import React, {FC, Fragment, memo, ReactHTMLElement, useRef, useState} from "react";
+import React, {FC, Fragment, memo, useState} from "react";
 import { useNavigate } from "react-router-dom"
-import {Button, Card, Col, Drawer, message, Popconfirm, Row, Table, Tag} from 'antd'
+import {Button, message, Popconfirm, Table, Tag} from 'antd'
 import {ResponseParam, ResumeObj, searchField} from "../../utils/type";
 import {deleteResume, detail, modifyMain} from "../../api";
-import styles from "./resume.module.css";
 import {formatTime, getLevelField, loadMF} from "../../utils/common";
 import DetailDrawer from "../../plugins/DetailDrawer/DetailDrawer";
 

@@ -1,7 +1,6 @@
 import {Button, Card, Col, Drawer, Row, Tag} from "antd";
 import styles from '../../view/resumeManagement/resume.module.css'
-import {levelField} from "../../utils/types";
-import {formatTime, loadMF} from "../../utils/common";
+import {formatTime, loadMF, getLevelField} from "../../utils/common";
 
 interface IProps {
     open?: boolean,
@@ -45,9 +44,6 @@ const DetailDrawer = (props:IProps) => {
         </Card>
         <Button style={{marginTop: 10}} type="primary">在线查看简历</Button>
     </Drawer>;
-    function getLevelField(level: string | undefined, jobbed: string | undefined) {
-        return level && jobbed ? `${levelField.get(level as string)} ${jobbed}` : null
-    }
 }
 
 export default DetailDrawer
