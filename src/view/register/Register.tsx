@@ -70,6 +70,10 @@ const Register: FC = () => {
         RegisterRequest(values).then((res:any) => {
             const { code, message } = res
             if (code === "200") {
+                messageApi.open({
+                    type: 'warning',
+                    content: message,
+                });
                 navigate("/login", {replace: true})
             } else {
                 messageApi.open({
@@ -114,7 +118,9 @@ const Register: FC = () => {
         SendEmail({email}).then(res => {
             console.log(res)
             if (res.code === "200") {
-                message.warning("验证码已发送")
+                message.success("验证码已发送")
+            } else {
+                message.warning(res.message)
             }
         })
     }

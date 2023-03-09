@@ -8,6 +8,11 @@
 这是一个简历管理系统后端使用golang，暂时还没有时间写md,有兴趣可以看看这个项目和GO项目[react项目](https://github.com/focusdroid/react-ts-resume) [Golang项目链接](https://github.com/focusdroid/ResumeManagement)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `注意`
+```text
+完成前后端的部署之后需要启动redis服务才能保持服务可用
+```
+
 ### `版本分支说明`
 ```text
 master 主分支
@@ -17,6 +22,8 @@ dev 测试分支
 [4月排期]featrue20230420 添加管理员权限获取全局操作记录(每天所有员工上传简历数量、已完成)
 [5月排期]featrue230520 优化代码（更换目前pdf预览问题，优化接口多次请求问题）
 ```
+
+
 
 
 ## Available Scripts
