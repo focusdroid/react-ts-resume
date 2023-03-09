@@ -124,7 +124,7 @@ const TableList:FC<IProps> = (props) =>{
         },
     ];
     const {list} = props
-    return <Fragment>111
+    return <Fragment>
         <Table
             style={{marginTop: 10}}
             rowKey={(record:any)=> record.id}

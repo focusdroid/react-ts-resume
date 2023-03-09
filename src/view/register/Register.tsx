@@ -14,7 +14,7 @@ const Register: FC = () => {
     }, [])
     return <div className={style.loginBox}>
         {contextHolder}
-        <Card style={{width: 500, height: 360}}>
+        <Card bordered={false} style={{width: 500, height: 360}}>
             <Form
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 16 }}

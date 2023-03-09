@@ -11,7 +11,7 @@ const Login = (props: any) => {
     const [messageApi, contextHolder] = message.useMessage();
     return <div className={style.loginBox}>
         {contextHolder}
-        <Card style={{width: 500, height: 340}}>
+        <Card bordered={false} style={{width: 500, height: 340}}>
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
