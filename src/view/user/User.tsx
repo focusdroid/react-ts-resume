@@ -6,6 +6,7 @@ import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 import style from './user.module.css'
 import {addUserInfo, getUserInfo} from "../../api";
 import {PartialUserInfo, UserInfo, UserInfoResponse} from "../../utils/type";
+import {loadMF} from "../../utils/common";
 const User:FC = () => {
     const [user, setUser] = useState<UserInfo>()
     const [isEdit, setIsEdit]= useState<boolean>(false)
@@ -95,7 +96,7 @@ const User:FC = () => {
                     {isEdit ? <Radio.Group disabled={!isEdit}>
                         <Radio value="M"> 男 </Radio>
                         <Radio value="F"> 女 </Radio>
-                    </Radio.Group> : <span>{user?.gender === "F" ? "女" : user?.gender === "M" ? "男" : ""}</span> }
+                    </Radio.Group> : <span>{loadMF(user?.gender)}</span> }
                 </Form.Item>
                 {!isEdit ? <Form.Item label="邮箱" name="gender"> <span>{user?.email}</span>
                 </Form.Item> : null}

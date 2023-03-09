@@ -4,7 +4,7 @@ import style from './admin.module.css'
 import { searchField, UserInfo} from "../../../utils/type";
 import {getUsersList} from "../../../api";
 import {connect} from "react-redux";
-const dayjs = require('dayjs')
+import {formatTime, loadMF} from "../../../utils/common";
 interface IPropsPage {
     page: number
     pageSize: number
@@ -33,7 +33,7 @@ const AdminStaff = (props: any) => {
             dataIndex: 'gender',
             key: 'gender',
             render: (text:any, record:any, _:any) => {
-                return <span>{text === 'M' ? '男' : '女'}</span>
+                return <span>{loadMF(text)}</span>
             }
         },
         {
@@ -51,7 +51,7 @@ const AdminStaff = (props: any) => {
             dataIndex: 'created_at',
             key: 'created_at',
             render: (text:any, record:any, _:any) => {
-                return <span>{dayjs(record?.created_at).format("YYYY-MM-DD HH:mm:ss")}</span>
+                return <span>{formatTime(record?.created_at)}</span>
             }
         },
     ];
