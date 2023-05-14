@@ -6,6 +6,7 @@ import useSWR from "swr";
 import { baseUrl } from '../../api/index'
 import TableList from "../resumeManagement/TableList";
 import {ResumeList} from "../../utils/type";
+import {Card} from "antd";
 
 const Backlog = () => {
     const [list, setResumeList] = useState<ResumeList>()
@@ -18,7 +19,9 @@ const Backlog = () => {
     useSWR([`${baseUrl}/list/mainResume`, obj], ([url, obj]) => fetcher(url, obj))
     return <div className={style.backlogview}>
         <Notes/>
-        <TableList list={list} freshSource={freshDataSource}/>
+        <Card title="重点关注" className={style.mt10}>
+            <TableList list={list} freshSource={freshDataSource}/>
+        </Card>
     </div>
     function freshDataSource (){
         fetcher(`${baseUrl}/list/mainResume`, '')
